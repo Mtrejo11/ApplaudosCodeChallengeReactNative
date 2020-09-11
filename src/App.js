@@ -8,9 +8,7 @@ import DrawerNavigationMenu from "./navigation/drawer";
 export default App = () => {
   return (
     <Provider store={store}>
-      <PersistGate
-        persistor={persistor}
-      >
+      <PersistGate persistor={persistor}>
         <DrawerNavigationMenu />
       </PersistGate>
     </Provider>

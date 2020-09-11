@@ -5,9 +5,6 @@ import AsyncStorage from '@react-native-community/async-storage';
 //reducers
 import classificationReducer from './reducers/classification'
 
-console.log('CLASSIFICATION', classificationReducer);
-
-
 //persist config
 const rootPersistConfig = {
     key: 'root',

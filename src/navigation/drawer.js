@@ -34,13 +34,11 @@ const Drawer = createDrawerNavigator();
 
 export default DrawerNavigationMenu = () => {
     return (
-
         <NavigationContainer>
             <Drawer.Navigator initialRouteName="Home">
                 <Drawer.Screen name="Home" component={MainContentScreen} initialParams={{ type: 'manga', }} />
                 <Drawer.Screen name="Notifications" component={NotificationsScreen} initialParams={{ type: 'anime' }} />
             </Drawer.Navigator>
         </NavigationContainer>
-
     );
 }
