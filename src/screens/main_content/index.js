@@ -8,7 +8,9 @@ import {
     TouchableOpacity,
     ActivityIndicator,
     Dimensions,
+    StyleSheet,
     SafeAreaView,
+    ScrollView
 } from "react-native";
 import { GET_CATEGORIES } from "../../states/actions";
 import { getCategories, getContentList } from "../../api/requests";
@@ -28,6 +30,7 @@ class MainContentScreen extends Component {
     }
 
     getCategories = async () => {
+        console.log('GETTING CATEGORIES', this.props.route.params.type);
         const categories = await getCategories();
         if (categories.status) {
             const currentCategories = [];
@@ -45,12 +48,15 @@ class MainContentScreen extends Component {
                     categories: currentCategories
                 }
             });
-            this.loadCategoryContent()
         } else {
             console.log('SOMETHING WENT WRONG', categories.message);
         }
     }
 
+    componentDidMount() {
+        console.log('DIDMOUNT', this.props.route.params.type);
+        this.loadCategoryContent()
+    }
 
     loadCategoryContent = async () => {
         const categoriesSaved = this.props.categories
@@ -67,19 +73,34 @@ class MainContentScreen extends Component {
         })
     }
 
+
+    componentWillUnmount() {
+        console.log('UMONUNTING COMPONENT', this.props.route.params.type);
+    }
     render() {
         return (
-            <SafeAreaView style={{ flex: 1 }}>
-                <Text>Main Screen {this.props.initialType}</Text>
-                {
-                    this.props.categories.map(category =>
-                        <CategorySection key={category.title + category.categoryId} category={category} dataFlag={this.state.changeFlag} />
-                    )
-                }
+            <SafeAreaView style={styles.mainContainer}>
+                <ScrollView>
+                    {
+                        this.props.categories.map(category =>
+                            <CategorySection key={category.title + category.categoryId} category={category} dataFlag={this.state.changeFlag} />
+                        )
+                    }
+                </ScrollView>
             </SafeAreaView>
         )
     }
 }
+
+const styles = StyleSheet.create({
+    mainContainer: {
+        flex: 1,
+        backgroundColor: '#2F2F2F',
+        padding: 15
+    },
+
+})
+
 const mapStateToProps = (state) => {
     return {
         initialType: state.classification.initialType,

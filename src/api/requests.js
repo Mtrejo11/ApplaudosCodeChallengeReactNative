@@ -1,7 +1,7 @@
 export const getContentList = async (reference, type) => {
     try {
 
-        const url = `${reference}/${type}?page[limit]=5&page[offset]=0`
+        const url = `${reference}/${type}`
 
         const response = await fetch(url, {
             method: "GET", // or 'PUT'
