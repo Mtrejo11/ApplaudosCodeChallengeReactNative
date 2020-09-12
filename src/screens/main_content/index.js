@@ -39,7 +39,8 @@ class MainContentScreen extends Component {
                     categoryId: category.id,
                     reference: category.links.self,
                     title: category.attributes.title,
-                    content: []
+                    content: [],
+                    relationships: category.relationships,
                 });
             });
             this.props.dispatch({
@@ -51,6 +52,14 @@ class MainContentScreen extends Component {
         } else {
             console.log('SOMETHING WENT WRONG', categories.message);
         }
+    }
+
+    getContentCharacters = async () => {
+        return 'CHARACTERS'
+    }
+
+    _navigateDetailHandler = (data) => {
+        this.props.navigation.navigate('Details', { content: data })
     }
 
     componentDidMount() {
@@ -83,7 +92,7 @@ class MainContentScreen extends Component {
                 <ScrollView>
                     {
                         this.props.categories.map(category =>
-                            <CategorySection key={category.title + category.categoryId} category={category} dataFlag={this.state.changeFlag} />
+                            <CategorySection key={category.title + category.categoryId} category={category} dataFlag={this.state.changeFlag} navigationHandler={this._navigateDetailHandler} />
                         )
                     }
                 </ScrollView>

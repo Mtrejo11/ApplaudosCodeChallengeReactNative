@@ -5,7 +5,7 @@ import { Image } from "react-native-elements";
 const ContentContainer = (props) => {
     const { content } = props;
     return (
-        <TouchableOpacity style={styles.categoryCard}>
+        <TouchableOpacity style={styles.categoryCard} onPress={() => props.navigationHandler(content)}>
             {/* <Text >{content.attributes.canonicalTitle}</Text> */}
             <Image source={{ uri: content.attributes.posterImage.tiny }} style={{ height: 150, resizeMode: 'contain', borderRadius: 1 }}
 
@@ -26,7 +26,7 @@ const CategorySection = (props) => {
                 horizontal
                 extraData={props.dataFlag}
                 keyExtractor={(element) => element.attributes.slug}
-                renderItem={(element) => <ContentContainer content={element.item} />}
+                renderItem={(element) => <ContentContainer content={element.item} navigationHandler={props.navigationHandler} />}
             />
         </View>
     )

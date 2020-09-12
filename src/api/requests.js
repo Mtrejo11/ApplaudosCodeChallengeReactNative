@@ -44,3 +44,49 @@ export const getCategories = async () => {
         return { status: false, message: error }
     }
 }
+
+
+
+export const getContentData = async (reference) => {
+    try {
+        const response = await fetch(reference, {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json",
+            }
+        });
+        const second_response = await response.json();
+        if (response.status === 200) {
+            
+            return ({ status: true, message: second_response });
+        } else {
+            throw new Error(second_response)
+        }
+    } catch (error) {
+        console.log('ERROR', error);
+        return { status: false, message: error }
+    }
+}
+
+
+
+
+export const getEachCharacter = async (reference) => {
+    try {
+        const response = await fetch(reference, {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json",
+            }
+        });
+        const second_response = await response.json();
+        if (response.status === 200) {
+            return second_response
+        } else {
+            throw new Error(second_response)
+        }
+    } catch (error) {
+        console.log('ERROR', error);
+        return error
+    }
+}
