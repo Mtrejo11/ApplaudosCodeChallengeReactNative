@@ -19,6 +19,7 @@ import CategorySection from '../../components/category'
 import TitleCard from "../../components/title_card";
 import { SearchBar } from "react-native-elements";
 import menuIcon from '../../assets/menu.png'
+import Spinner from "react-native-spinkit";
 import clearIcon from '../../assets/clear_filter.png'
 
 
@@ -199,7 +200,10 @@ class MainContentScreen extends Component {
                 <ScrollView onScrollEndDrag={this._scrollEndHandler} >
                     {
                         this.state.loadingContent ?
-                            <ActivityIndicator size="large" color="#D2F898" style={{ marginTop: '30%' }} /> :
+                            <View style={{ width: '100%', justifyContent: 'center', alignItems: 'center' }}>
+                                <Spinner style={{ marginTop: '40%' }} isVisible={true} size={200} type={'Bounce'} color={'#D2F898'} />
+                            </View>
+                            :
                             <>
                                 {this.props.route.params.type === 'anime' ?
                                     this.props.animeCategories.length > 0 ?
