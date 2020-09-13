@@ -23,7 +23,7 @@ import SectionText from "../../components/section_text";
 import { Image, CheckBox } from "react-native-elements";
 import { ADD_FAVORITE, DELETE_FAVORITE } from "../../states/actions";
 
-
+import { ChaptersTab, CharactersTab } from "../../components/tab_screens";
 
 
 const initialStates = {
@@ -32,6 +32,8 @@ const initialStates = {
     chapters: [],
     genres: "",
     marked: false,
+    loadingChapters: true,
+    loadingCharacters: true,
 }
 
 function HomeScreen() {
@@ -72,7 +74,8 @@ class MainContentScreen extends Component {
         characters.message.data.forEach(async (character, index) => {
             const characterResponse = await getEachDetail(character.relationships.character.links.related);
             charactersDetail.push(characterResponse);
-            if (index === characters.message.data.length - 1) this.setState({ characters: charactersDetail });
+            if (index === characters.message.data.length - 1) this.setState({ characters: charactersDetail, loadingCharacters: false });
+            console.log('CHRARACTER DETAILS', charactersDetail);
         });
     }
 
@@ -80,12 +83,9 @@ class MainContentScreen extends Component {
     getChapters = async () => {
         const { content } = this.props.route.params;
         const chapters = await getContentData(content.type === "anime" ? content.relationships.episodes.links.related : content.relationships.chapters.links.related);
-        const chaptersDetail = [];
-        chapters.message.data.forEach(async (chapter, index) => {
-            const chaptersResponse = await getEachDetail(content.type === 'anime' ? chapter.relationships.media.links.related : chapter.relationships[content.type].links.related);
-            chaptersDetail.push(chaptersResponse);
-            if (index === chapters.message.data.length - 1) this.setState({ chapters: chaptersDetail });
-        });
+        console.log('CHAPTERS GOTTEN');
+        this.setState({ chapters: chapters.message.data, loadingChapters: false });
+       
     }
 
     getGenres = async () => {
@@ -169,17 +169,21 @@ class MainContentScreen extends Component {
                             <SectionText mainText="Airing Status" secondaryText={content.attributes.status} />
                         </View>
                     </View>
+
                     <SectionText mainText="Synopsis" secondaryText={content.attributes.synopsis} />
-                    <Tab.Navigator
-                        tabBarOptions={{
-                            style: { backgroundColor: 'transparent' },
-                            activeTintColor: '#FFFFFF',
-                            inactiveTintColor: 'gray',
-                            indicatorStyle: { backgroundColor: '#F6F930' }
-                        }} >
-                        <Tab.Screen name={content.type === 'anime' ? 'Episodes' : 'Chapters'} component={HomeScreen} />
-                        <Tab.Screen name="Characters" component={SettingsScreen} />
-                    </Tab.Navigator>
+                    {
+                        this.state.loadingChapters || this.state.loadingCharacters ? null :
+                            <Tab.Navigator
+                                tabBarOptions={{
+                                    style: { backgroundColor: 'transparent' },
+                                    activeTintColor: '#FFFFFF',
+                                    inactiveTintColor: 'gray',
+                                    indicatorStyle: { backgroundColor: '#F6F930' }
+                                }} >
+                                <Tab.Screen name={content.type === 'anime' ? 'Episodes' : 'Chapters'} component={ChaptersTab} initialParams={{ chapters: this.state.chapters }} />
+                                <Tab.Screen name="Characters" component={CharactersTab} initialParams={{ characters: this.state.characters }} />
+                            </Tab.Navigator>
+                    }
                 </ScrollView>
             </SafeAreaView>
         )

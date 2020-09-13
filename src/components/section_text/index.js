@@ -2,7 +2,6 @@ import React from 'react'
 import { Text, View, StyleSheet } from 'react-native'
 
 const SectionText = props => {
-    console.log('CURRENY PROPS', props);
     return (
         <View>
             <Text style={styles.mainText}>{props.mainText}</Text>
