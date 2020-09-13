@@ -16,8 +16,10 @@ import { GET_CATEGORIES } from "../../states/actions";
 import { getCategories, getContentList } from "../../api/requests";
 
 import CategorySection from '../../components/category'
+import TitleCard from "../../components/title_card";
 import { SearchBar } from "react-native-elements";
 import menuIcon from '../../assets/menu.png'
+import clearIcon from '../../assets/clear_filter.png'
 
 
 const screenHeight = Dimensions.get('window').height
@@ -86,8 +88,6 @@ class MainContentScreen extends Component {
             const categoryContent = await getContentList(category.reference, this.props.route.params.type)
             categoriesSaved[index].content = categoryContent.message.data;
             fullContent = fullContent.concat(categoriesSaved[index].content);
-            console.log('--------------------------------------------------');
-            console.log('FULL ARRAY', fullContent.length);
             this.props.dispatch({
                 type: GET_CATEGORIES,
                 payload: {
@@ -115,7 +115,7 @@ class MainContentScreen extends Component {
                 toValue: 0,
                 duration: 500,
                 useNativeDriver: false
-            }).start(this.setState({ viewState: true })
+            }).start(this.setState({ viewState: true, search: '' })
             );
         }
     }
@@ -125,10 +125,7 @@ class MainContentScreen extends Component {
         const content = this.props[this.props.route.params.type];
         let foundTitles = [];
         content.forEach(title => {
-            console.log('search', search)
-            console.log('store', title.attributes.canonicalTitle)
             let tmp = title.attributes.canonicalTitle.indexOf(search)
-            console.log('tmp', tmp)
             if (tmp !== -1 && search !== '') {
                 foundTitles.push(title)
             }
@@ -148,51 +145,50 @@ class MainContentScreen extends Component {
         }
         return (
             <SafeAreaView style={styles.mainContainer}>
-                <View style={{ marginBottom: 25 }}>
-                    <View style={{ flexDirection: 'row', alignItems: 'flex-start', justifyContent: 'flex-start' }}>
-                        <TouchableOpacity style={{ width: '15%', height: 40, justifyContent: 'center' }} onPress={() => this.props.navigation.openDrawer()}>
+                <View style={{ marginBottom: 10 }}>
+                    <View style={styles.topContainer}>
+                        <TouchableOpacity style={styles.menuButton} onPress={() => this.props.navigation.openDrawer()}>
                             <Image source={menuIcon} style={{ width: 30, height: 30 }} />
                         </TouchableOpacity>
-
                         <SearchBar
                             placeholder="Search"
                             platform='ios'
                             onChangeText={this._searchHandler}
+                            cancelIcon={null}
                             value={this.state.search}
                             containerStyle={{ backgroundColor: 'trasnparent', padding: 0, width: '85%', height: 40 }}
                             inputContainerStyle={{ backgroundColor: 'trasnparent', margin: 0, height: 30 }}
                             onFocus={() => this.toggleAnimation(true)}
                             onCancel={() => this.toggleAnimation(false)}
                         />
+
                     </View>
                     <Animated.View style={[styles.animatedBox, animatedStyle]}>
-
                         {
                             !this.state.viewState ?
                                 <>
                                     {
-                                        this.state.searchResults.length > 0 ? null : <Text >No results</Text>
-
+                                        this.state.searchResults.length > 0 ? null : <Text style={styles.searchText}>No results</Text>
                                     }
                                     <FlatList
                                         data={this.state.searchResults}
                                         extraData={this.state.searchResults}
+                                        style={{ width: '100%', marginTop: 20 }}
                                         keyExtractor={(element, index) => `${element.id}-${index}`}
-                                        renderItem={title => (
-                                            <Text>{title.item.attributes.canonicalTitle}</Text>
-                                        )}
+                                        numColumns={3}
+                                        renderItem={title => <TitleCard title={title.item} navigationHandler={this._navigateDetailHandler} />}
                                     />
                                 </>
                                 : null
                         }
                     </Animated.View>
                 </View>
-                <ScrollView >
-                    {/* {
+                <ScrollView  >
+                    {
                         this.props.categories.map(category =>
                             <CategorySection key={category.title + category.categoryId} category={category} dataFlag={this.state.changeFlag} navigationHandler={this._navigateDetailHandler} />
                         )
-                    } */}
+                    }
                 </ScrollView>
             </SafeAreaView>
         )
@@ -205,15 +201,28 @@ const styles = StyleSheet.create({
         backgroundColor: '#2F2F2F',
         padding: 15
     },
+    topContainer: {
+        flexDirection: 'row',
+        alignItems: 'flex-start',
+        justifyContent: 'flex-start',
+        position: 'absolute',
+        zIndex: 10,
+        backgroundColor: '#2F2F2F'
+    },
     animatedBox:
     {
+        marginTop: 50,
         width: 50,
         height: 0,
-        backgroundColor: '#0091EA',
-        alignItems: 'center',
+        alignItems: 'center'
+    },
+    menuButton: {
+        width: '15%',
+        height: 40,
+        justifyContent: 'center'
     },
     searchText: {
-        color: '#FFFFFF'
+        color: '#FFFFFF',
     }
 
 })

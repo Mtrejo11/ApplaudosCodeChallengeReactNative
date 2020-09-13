@@ -25,7 +25,7 @@ export const getContentList = async (reference, type) => {
 
 export const getCategories = async () => {
     try {
-        const url = `https://kitsu.io/api/edge/categories/`
+        const url = `https://kitsu.io/api/edge/categories?page[limit]=3`
         const response = await fetch(url, {
             method: "GET",
             headers: {
@@ -57,7 +57,7 @@ export const getContentData = async (reference) => {
         });
         const second_response = await response.json();
         if (response.status === 200) {
-            
+
             return ({ status: true, message: second_response });
         } else {
             throw new Error(second_response)

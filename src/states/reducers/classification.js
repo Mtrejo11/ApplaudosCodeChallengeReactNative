@@ -1,10 +1,13 @@
-import { GET_CATEGORIES } from '../actions'
+import { ADD_FAVORITE, DELETE_FAVORITE, GET_CATEGORIES } from '../actions'
 const INITIAL_STATE = {
     initialType: 'anime',
     categories: [],
     animes: [],
     mangas: [],
-    juanes: [],
+    favorites: {
+        anime: [],
+        manga: []
+    },
 };
 
 const classification = (state = INITIAL_STATE, action) => {
@@ -14,6 +17,27 @@ const classification = (state = INITIAL_STATE, action) => {
                 ...state,
                 ...action.payload
             }
+
+        case ADD_FAVORITE: {
+            const currentFavorites = state.favorites;
+            currentFavorites[action.payload.type].push(action.payload.title);
+            console.log('CURRENT FAVS', currentFavorites);
+            return {
+                ...state,
+                favorites: currentFavorites
+            }
+        }
+        case DELETE_FAVORITE: {
+            const currentFavorites = state.favorites;
+            const index = currentFavorites[action.payload.type].findIndex(title => title.id === action.payload.title.id);
+            currentFavorites[action.payload.type].splice(index, 1);
+            console.log('CURRENT FAVS', currentFavorites);
+            return {
+                ...state,
+                favorites: currentFavorites
+            }
+        }
+
         default:
             return state;
     }

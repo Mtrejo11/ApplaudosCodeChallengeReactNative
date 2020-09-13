@@ -20,7 +20,8 @@ const Tab = createMaterialTopTabNavigator();
 
 import { getContentData, getEachDetail } from "../../api/requests";
 import SectionText from "../../components/section_text";
-import { Image } from "react-native-elements";
+import { Image, CheckBox } from "react-native-elements";
+import { ADD_FAVORITE, DELETE_FAVORITE } from "../../states/actions";
 
 
 
@@ -30,6 +31,7 @@ const initialStates = {
     characters: [],
     chapters: [],
     genres: "",
+    marked: false,
 }
 
 function HomeScreen() {
@@ -58,6 +60,11 @@ class MainContentScreen extends Component {
         this.getChapters()
     }
 
+    componentDidMount() {
+        this.checkFavorite()
+
+    }
+
     getCharacters = async () => {
         const { content } = this.props.route.params
         const characters = await getContentData(content.relationships.characters.links.related)
@@ -69,12 +76,12 @@ class MainContentScreen extends Component {
         });
     }
 
+
     getChapters = async () => {
         const { content } = this.props.route.params;
         const chapters = await getContentData(content.type === "anime" ? content.relationships.episodes.links.related : content.relationships.chapters.links.related);
         const chaptersDetail = [];
         chapters.message.data.forEach(async (chapter, index) => {
-            console.log('EACH DATA CHAPTER', chapter);
             const chaptersResponse = await getEachDetail(content.type === 'anime' ? chapter.relationships.media.links.related : chapter.relationships[content.type].links.related);
             chaptersDetail.push(chaptersResponse);
             if (index === chapters.message.data.length - 1) this.setState({ chapters: chaptersDetail });
@@ -92,6 +99,36 @@ class MainContentScreen extends Component {
         }
     }
 
+    checkFavorite = () => {
+        const { content } = this.props.route.params
+        const { favorites } = this.props
+        const index = favorites[content.type].findIndex(title => title.id === content.id);
+        if (index !== -1) this.setState({ marked: true })
+        else this.setState({ marked: false })
+    }
+
+    _favoriteHandler = () => {
+        const { content } = this.props.route.params;
+        if (!this.state.marked) {
+            this.props.dispatch({
+                type: ADD_FAVORITE,
+                payload: {
+                    type: content.type,
+                    title: content,
+                }
+            })
+        } else {
+            this.props.dispatch({
+                type: DELETE_FAVORITE,
+                payload: {
+                    type: content.type,
+                    title: content,
+                }
+            })
+        }
+        this.checkFavorite()
+    }
+
     render() {
         const { content } = this.props.route.params;
         return (
@@ -100,36 +137,48 @@ class MainContentScreen extends Component {
                     <View style={styles.row}>
                         <View style={styles.posterContainer}>
                             <Image source={{ uri: content.attributes.posterImage.small }} style={{ height: 170, resizeMode: 'cover', marginBottom: 15, }} />
-                            <SectionText mainText="Genres" secondaryText={this.state.genres} />
                         </View>
-
                         <View style={styles.generalInfoContainer}>
                             <SectionText mainText="Main Title" secondaryText={content.attributes.titles[[Object.keys(content.attributes.titles)[0]]]} />
                             <SectionText mainText="Canonical Title" secondaryText={content.attributes.canonicalTitle} />
                             <SectionText mainText="Type" secondaryText={`${content.type}, ${content.type === "anime" ? `${content.attributes.episodeCount} episodes` : `${content.attributes.chapterCount} chapters`}`} />
                             <SectionText mainText="Year" secondaryText={`${content.attributes.startDate} till ${content.attributes.endDate}`} />
                         </View>
-
+                    </View>
+                    <View style={[styles.row, { justifyContent: 'space-between' }]}>
+                        <SectionText mainText="Genres" secondaryText={this.state.genres} />
+                        <CheckBox
+                            center
+                            containerStyle={{ backgroundColor: 'transparent', borderWidth: 0 }}
+                            onPress={this._favoriteHandler}
+                            iconRight
+                            textStyle={{ color: '#FFFFFF', fontWeight: '100', fontSize: 12 }}
+                            checkedIcon='heart'
+                            uncheckedIcon='heart-o'
+                            checkedColor='#F6F930'
+                            checked={this.state.marked}
+                        />
                     </View>
                     <View style={styles.row}>
                         <View style={styles.midDetailContainer}>
                             <SectionText mainText="Average Rating" secondaryText={content.attributes.averageRating} />
                             <SectionText mainText={content.type === "anime" ? "Episode Duration" : "Chapter Count"} secondaryText={content.type === "anime" ? content.attributes.episodeLength : content.attributes.chapterCount} />
-
                         </View>
                         <View style={styles.midDetailContainer}>
                             <SectionText mainText="Age Rating" secondaryText={content.attributes.ageRating} />
                             <SectionText mainText="Airing Status" secondaryText={content.attributes.status} />
                         </View>
                     </View>
-                    {
-                        this.state.chapters.map((element, index) => (
-                            <Text key={index.toString()}>Hola mundo</Text>
-                        ))
-                    }
-                    <Tab.Navigator>
-                        <Tab.Screen name="Home" component={HomeScreen} />
-                        <Tab.Screen name="Settings" component={SettingsScreen} />
+                    <SectionText mainText="Synopsis" secondaryText={content.attributes.synopsis} />
+                    <Tab.Navigator
+                        tabBarOptions={{
+                            style: { backgroundColor: 'transparent' },
+                            activeTintColor: '#FFFFFF',
+                            inactiveTintColor: 'gray',
+                            indicatorStyle: { backgroundColor: '#F6F930' }
+                        }} >
+                        <Tab.Screen name={content.type === 'anime' ? 'Episodes' : 'Chapters'} component={HomeScreen} />
+                        <Tab.Screen name="Characters" component={SettingsScreen} />
                     </Tab.Navigator>
                 </ScrollView>
             </SafeAreaView>
@@ -162,7 +211,9 @@ const styles = StyleSheet.create({
 const mapStateToProps = (state) => {
     return {
         initialType: state.classification.initialType,
-        categories: state.classification.categories
+        categories: state.classification.categories,
+        favorites: state.classification.favorites,
+
 
     }
 }

@@ -11,8 +11,8 @@ export default DrawerNavigationMenu = () => {
     return (
         <NavigationContainer>
             <Drawer.Navigator initialRouteName="Home">
-                <Drawer.Screen name="Home" component={StackNavigation} initialParams={{ type: 'manga', }} />
-                <Drawer.Screen name="Notifications" component={StackNavigation} initialParams={{ type: 'anime' }} />
+                <Drawer.Screen name="Manga" component={StackNavigation} initialParams={{ type: 'manga', }} />
+                <Drawer.Screen name="Anime" component={StackNavigation} initialParams={{ type: 'anime' }} />
             </Drawer.Navigator>
         </NavigationContainer>
     );

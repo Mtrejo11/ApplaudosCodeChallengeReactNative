@@ -4,10 +4,11 @@ import { Text, View, StyleSheet } from 'react-native'
 const SectionText = props => {
     console.log('CURRENY PROPS', props);
     return (
-        <>
+        <View>
             <Text style={styles.mainText}>{props.mainText}</Text>
             <Text style={styles.secondaryText}>{props.secondaryText ? props.secondaryText : 'N/E'}</Text>
-        </>
+        </View>
+
     )
 }
 
@@ -22,6 +23,7 @@ const styles = StyleSheet.create({
         color: '#FFFFFF',
         fontSize: 12,
         marginBottom: 8,
+        textAlign: 'justify'
     }
 
 })
