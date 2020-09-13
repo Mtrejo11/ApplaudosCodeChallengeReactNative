@@ -61,7 +61,6 @@ class MainContentScreen extends Component {
             const characterResponse = await getEachDetail(character.relationships.character.links.related);
             charactersDetail.push(characterResponse);
             if (index === characters.message.data.length - 1) this.setState({ characters: charactersDetail, loadingCharacters: false });
-            console.log('CHRARACTER DETAILS', charactersDetail);
         });
     }
 
@@ -69,7 +68,6 @@ class MainContentScreen extends Component {
     getChapters = async () => {
         const { content } = this.props.route.params;
         const chapters = await getContentData(content.type === "anime" ? content.relationships.episodes.links.related : content.relationships.chapters.links.related);
-        console.log('CHAPTERS GOTTEN');
         this.setState({ chapters: chapters.message.data, loadingChapters: false });
 
     }

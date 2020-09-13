@@ -21,7 +21,6 @@ class MainContentScreen extends Component {
             ...initialStates,
 
         }
-
     }
 
     _navigateDetailHandler = (data) => {
