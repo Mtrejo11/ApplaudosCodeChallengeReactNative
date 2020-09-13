@@ -71,7 +71,7 @@ export const getContentData = async (reference) => {
 
 
 
-export const getEachCharacter = async (reference) => {
+export const getEachDetail = async (reference) => {
     try {
         const response = await fetch(reference, {
             method: "GET",
