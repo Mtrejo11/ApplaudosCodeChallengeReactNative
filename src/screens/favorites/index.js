@@ -28,7 +28,6 @@ class MainContentScreen extends Component {
     }
 
     render() {
-
         return (
             <SafeAreaView style={styles.mainContainer}>
                 <View style={{ marginBottom: 10 }}>
@@ -36,20 +35,19 @@ class MainContentScreen extends Component {
                         <TouchableOpacity style={styles.menuButton} onPress={() => this.props.navigation.openDrawer()}>
                             <Image source={menuIcon} style={{ width: 30, height: 30 }} />
                         </TouchableOpacity>
-
                     </View>
 
                 </View>
                 {
-                    this.props.favorites.length > 0 ?
-                        <FlatList
-                            data={this.props.favorites}
-                            extraData={this.props.favorites}
-                            style={{ width: '100%' }}
-                            keyExtractor={(element, index) => `${element.id}-${index}`}
-                            numColumns={3}
-                            renderItem={title => <TitleCard title={title.item} navigationHandler={this._navigateDetailHandler} fav={true} />}
-                        /> : <Text style={[styles.searchText, { marginTop: 60, textAlign: 'center' }]}>No favorite content found.</Text>
+                    this.props.favorites.length > 0 ? <>
+                        <Text style={[styles.searchText, { fontSize: 12 }]}>Recently {this.props.initialType}</Text>
+                        <View style={{ flexDirection: 'row', flexWrap: 'wrap' }}>
+                            {
+                                this.props.favorites.map((title, index) => <TitleCard title={title} key={`${title.id}-${index}`} navigationHandler={this._navigateDetailHandler} fav={true} />)
+                            }
+                        </View>
+                    </>
+                        : <Text style={[styles.searchText, { marginTop: 60, textAlign: 'center' }]}>No favorite content found.</Text>
                 }
             </SafeAreaView>
         )

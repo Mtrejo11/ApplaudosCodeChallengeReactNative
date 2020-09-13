@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import {
     Text,
     View,
-    Button,
+    ToastAndroid,
     FlatList,
     TouchableOpacity,
     ActivityIndicator,
@@ -48,7 +48,6 @@ class MainContentScreen extends Component {
 
     getCategories = async () => {
         if (!this.state.fetchingApi) {
-            console.log('fectching api');
             const categories = await getCategories(this.state.categoriesStep);
             if (categories.status) {
                 const currentCategories = this.state.categoriesStep === 0 ? [] : this.props.route.params.type === 'anime' ? this.props.animeCategories : this.props.mangaCategories;
@@ -69,14 +68,10 @@ class MainContentScreen extends Component {
                 });
                 await this.loadCategoryContent()
                 this.setState({ categoriesStep: this.state.categoriesStep + 5, loadingContent: false, fetchingApi: false, })
-                console.log('FINISHED fectching api');
-
-
             } else {
-                console.log('SOMETHING WENT WRONG', categories.message);
-                await this.loadCategoryContent()
-                this.setState({ loadingContent: false, fetchingApi: false, })
-
+                ToastAndroid.show("Couldn't connect to the server", ToastAndroid.SHORT);
+                await this.loadCategoryContent();
+                this.setState({ loadingContent: false, fetchingApi: false, });
 
             }
         }
@@ -88,22 +83,28 @@ class MainContentScreen extends Component {
 
 
     loadCategoryContent = async () => {
-        console.log('FETCHING EACH CONTENT');
         const categoriesSaved = this.props.route.params.type === 'anime' ? this.props.animeCategories : this.props.mangaCategories
+        console.log('CATEGORIES SAVED', categoriesSaved);
         let fullContent = []
-        for (let index = this.state.categoriesStep; index < this.state.categoriesStep + 5; index++) {
-            console.log('inside for');
-            const categoryContent = await getContentList(categoriesSaved[index].reference, this.props.route.params.type)
-            categoriesSaved[index].content = categoryContent.message.data;
-            fullContent = fullContent.concat(categoriesSaved[index].content);
-            this.props.dispatch({
-                type: GET_CATEGORIES,
-                payload: {
-                    [this.props.route.params.type === 'anime' ? 'animeCategories' : 'mangaCategories']: categoriesSaved,
-                    [this.props.route.params.type]: fullContent
+        if (categoriesSaved.length > 0) {
+            for (let index = this.state.categoriesStep; index < this.state.categoriesStep + 5; index++) {
+                const categoryContent = await getContentList(categoriesSaved[index].reference, this.props.route.params.type)
+                if (categoryContent.status) {
+                    categoriesSaved[index].content = categoryContent.message.data;
+                    fullContent = fullContent.concat(categoriesSaved[index].content);
+                    this.props.dispatch({
+                        type: GET_CATEGORIES,
+                        payload: {
+                            [this.props.route.params.type === 'anime' ? 'animeCategories' : 'mangaCategories']: categoriesSaved,
+                            [this.props.route.params.type]: fullContent
+                        }
+                    });
+                    this.setState({ changeFlag: !this.state.changeFlag })
                 }
-            });
-            this.setState({ changeFlag: !this.state.changeFlag })
+                else {
+                    console.log('ERROR FETCHING CATEGORY');
+                }
+            }
         }
 
     }
@@ -135,22 +136,19 @@ class MainContentScreen extends Component {
         content.forEach(title => {
             let tmp = title.attributes.canonicalTitle.indexOf(search)
             if (tmp !== -1 && search !== '') {
-                foundTitles.push(title)
+                foundTitles.push(title);
             }
         });
         this.setState({ search, searchResults: foundTitles, });
     };
 
     _drawerHandler = () => {
-        console.log('DRAWER CLICKED');
         this.props.navigation.openDrawer()
     }
 
     _scrollEndHandler = () => {
         this.setState({ fetchingApi: true, })
-        console.log('Reached end');
-
-        this.getCategories()
+        this.getCategories();
     }
 
     render() {
@@ -204,12 +202,28 @@ class MainContentScreen extends Component {
                             <ActivityIndicator size="large" color="#D2F898" style={{ marginTop: '30%' }} /> :
                             <>
                                 {this.props.route.params.type === 'anime' ?
-                                    this.props.animeCategories.map(category =>
-                                        <CategorySection key={category.title + category.categoryId} category={category} dataFlag={this.state.changeFlag} navigationHandler={this._navigateDetailHandler} />
-                                    ) :
-                                    this.props.mangaCategories.map(category =>
-                                        <CategorySection key={category.title + category.categoryId} category={category} dataFlag={this.state.changeFlag} navigationHandler={this._navigateDetailHandler} />
-                                    )}
+                                    this.props.animeCategories.length > 0 ?
+                                        this.props.animeCategories.map(category =>
+                                            <CategorySection key={category.title + category.categoryId} category={category} dataFlag={this.state.changeFlag} navigationHandler={this._navigateDetailHandler} />
+                                        ) :
+                                        <>
+                                            <Text style={styles.failureText}>Could't retrieve {this.props.route.params.type} information</Text>
+                                            <TouchableOpacity onPress={this.getCategories}>
+                                                <Text style={[styles.failureText, { color: '#F6F930', marginTop: 5 }]}>Retry</Text>
+                                            </TouchableOpacity>
+                                        </>
+                                    :
+                                    this.props.mangaCategories.length > 0 ?
+                                        this.props.mangaCategories.map(category =>
+                                            <CategorySection key={category.title + category.categoryId} category={category} dataFlag={this.state.changeFlag} navigationHandler={this._navigateDetailHandler} />
+                                        ) :
+                                        <>
+                                            <Text style={styles.failureText}>Could't retrieve {this.props.route.params.type} information</Text>
+                                            <TouchableOpacity onPress={this.getCategories}>
+                                                <Text style={[styles.failureText, { color: '#F6F930', marginTop: 5 }]}>Retry</Text>
+                                            </TouchableOpacity>
+                                        </>
+                                }
                                 {
                                     this.state.fetchingApi ? <ActivityIndicator size="small" color="#D2F898" style={{ marginTop: 20 }} /> : null
                                 }
@@ -250,6 +264,12 @@ const styles = StyleSheet.create({
     },
     searchText: {
         color: '#FFFFFF',
+    },
+    failureText: {
+        fontSize: 12,
+        textAlign: 'center',
+        marginTop: '20%',
+        color: '#FFFFFF'
     }
 
 })

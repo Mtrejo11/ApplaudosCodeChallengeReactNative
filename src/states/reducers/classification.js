@@ -16,25 +16,20 @@ const classification = (state = INITIAL_STATE, action) => {
                 ...action.payload
             }
 
-        case ADD_FAVORITE: {
-            const currentFavorites = state.favorites;
-            currentFavorites.push(action.payload.title);
-            console.log('CURRENT FAVS', currentFavorites);
+        case ADD_FAVORITE:
+
             return {
                 ...state,
-                favorites: currentFavorites
+                ...action.payload
             }
-        }
-        case DELETE_FAVORITE: {
-            const currentFavorites = state.favorites;
-            const index = currentFavorites.findIndex(title => title.id === action.payload.title.id);
-            currentFavorites.splice(index, 1);
-            console.log('CURRENT FAVS', currentFavorites);
+
+        case DELETE_FAVORITE:
+
             return {
                 ...state,
-                favorites: currentFavorites
+                ...action.payload
+
             }
-        }
 
         default:
             return state;

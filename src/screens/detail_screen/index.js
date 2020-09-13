@@ -94,24 +94,45 @@ class MainContentScreen extends Component {
     _favoriteHandler = () => {
         const { content } = this.props.route.params;
         if (!this.state.marked) {
-            this.props.dispatch({
-                type: ADD_FAVORITE,
-                payload: {
-                    type: content.type,
-                    title: content,
-                }
-            })
+            this.addFavorite()
         } else {
-            this.props.dispatch({
-                type: DELETE_FAVORITE,
-                payload: {
-                    type: content.type,
-                    title: content,
-                }
-            })
+            this.removeFavorite()
         }
         this.checkFavorite()
     }
+
+
+    addFavorite = () => {
+        const { content } = this.props.route.params;
+        const currentFavorites = this.props.favorites;
+        currentFavorites.push(content);
+        console.log('CURRENT FAVS', currentFavorites.length);
+
+        this.props.dispatch({
+            type: ADD_FAVORITE,
+            payload: {
+                favorites: currentFavorites,
+                initialType: `added: ${content.attributes.canonicalTitle}`
+
+            }
+        })
+    }
+
+    removeFavorite = () => {
+        const { content } = this.props.route.params;
+        const currentFavorites = this.props.favorites;
+        const index = currentFavorites.findIndex(title => title.id === content.id);
+        currentFavorites.splice(index, 1);
+        console.log('CURRENT FAVS', currentFavorites.length);
+        this.props.dispatch({
+            type: DELETE_FAVORITE,
+            payload: {
+                favorites: currentFavorites,
+                initialType: `removed: ${content.attributes.canonicalTitle}`
+            }
+        })
+    }
+
 
     render() {
         const { content } = this.props.route.params;
