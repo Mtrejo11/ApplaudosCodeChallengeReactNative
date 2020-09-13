@@ -88,7 +88,7 @@ class MainContentScreen extends Component {
     checkFavorite = () => {
         const { content } = this.props.route.params
         const { favorites } = this.props
-        const index = favorites[content.type].findIndex(title => title.id === content.id);
+        const index = favorites.findIndex(title => title.id === content.id);
         if (index !== -1) this.setState({ marked: true })
         else this.setState({ marked: false })
     }

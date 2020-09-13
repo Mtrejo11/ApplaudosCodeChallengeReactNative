@@ -4,10 +4,7 @@ const INITIAL_STATE = {
     categories: [],
     animes: [],
     mangas: [],
-    favorites: {
-        anime: [],
-        manga: []
-    },
+    favorites: [],
 };
 
 const classification = (state = INITIAL_STATE, action) => {
@@ -20,7 +17,7 @@ const classification = (state = INITIAL_STATE, action) => {
 
         case ADD_FAVORITE: {
             const currentFavorites = state.favorites;
-            currentFavorites[action.payload.type].push(action.payload.title);
+            currentFavorites.push(action.payload.title);
             console.log('CURRENT FAVS', currentFavorites);
             return {
                 ...state,
@@ -29,8 +26,8 @@ const classification = (state = INITIAL_STATE, action) => {
         }
         case DELETE_FAVORITE: {
             const currentFavorites = state.favorites;
-            const index = currentFavorites[action.payload.type].findIndex(title => title.id === action.payload.title.id);
-            currentFavorites[action.payload.type].splice(index, 1);
+            const index = currentFavorites.findIndex(title => title.id === action.payload.title.id);
+            currentFavorites.splice(index, 1);
             console.log('CURRENT FAVS', currentFavorites);
             return {
                 ...state,

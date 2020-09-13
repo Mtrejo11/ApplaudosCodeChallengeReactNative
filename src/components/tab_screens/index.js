@@ -16,7 +16,9 @@ export const CharactersTab = (props) => {
     return (
         <View style={styles.mainContainer}>
             {
-                props.route.params.characters.map((title, index) => <CharacterCard key={`${index}-`} title={title} />)
+                props.route.params.characters.length > 0 ?
+                    props.route.params.characters.map((title, index) => <CharacterCard key={`${index}-`} title={title} />) :
+                    <Text style={styles.listText} >No characters information available</Text>
             }
         </View>
     )
@@ -27,20 +29,23 @@ const ChapterCard = props => {
     const chapter = props.title
     // console.log('EACH CHAPTER', chapter);
     return (
-        chapter.attributes.canonicalTitle ?
             <View style={{ flexDirection: 'row', marginBottom: 20 }}>
                 <Text style={styles.listText}>{chapter.attributes.number}. </Text>
-                <Text style={styles.listText}>{chapter.attributes.canonicalTitle}</Text>
-            </View> : null
+                <Text style={styles.listText}>{chapter.attributes.canonicalTitle ? chapter.attributes.canonicalTitle : 'Title not available'}</Text>
+            </View> 
     )
 }
 
 export const ChaptersTab = (props) => {
-
+    console.log('CHAPTERS', props.route.params.chapters);
     return (
         <View style={styles.mainContainer}>
             {
-                props.route.params.chapters.map((title, index) => <ChapterCard key={`${index}-`} title={title} />)
+                props.route.params.chapters.length > 0 ?
+                    props.route.params.chapters.map((title, index) => <ChapterCard key={`${index}-`} title={title} />)
+                    :
+                    <Text style={styles.listText} >No chapters information available</Text>
+
             }
         </View>
     )

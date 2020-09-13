@@ -6,6 +6,11 @@ const TitleCard = props => {
     return (
         <TouchableOpacity style={styles.outterContainer} onPress={() => props.navigationHandler(title)}>
             <ImageBackground source={{ uri: title.attributes.posterImage.tiny }} style={styles.imageContainer} imageStyle={{ resizeMode: 'cover' }}>
+                {
+                    props.fav ?
+                        <Text numberOfLines={2} style={styles.typeLabel}>{title.type}</Text> : null
+
+                }
                 <Text numberOfLines={2} style={styles.titleText}>{title.attributes.canonicalTitle}</Text>
             </ImageBackground>
         </TouchableOpacity>
@@ -30,6 +35,15 @@ const styles = StyleSheet.create({
         fontSize: 10,
         color: '#FFFFFF',
         textAlign: 'center',
+        paddingHorizontal: 5
+    },
+    typeLabel: {
+        position: 'absolute',
+        right: 0,
+        top: 0,
+        backgroundColor: '#D2F898',
+        fontSize: 10,
+        color: '#2F2F2F',
         paddingHorizontal: 5
     }
 })
