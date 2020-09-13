@@ -12,6 +12,7 @@ import {
     SafeAreaView,
     ScrollView
 } from "react-native";
+import { WebView } from 'react-native-webview';
 
 import { createMaterialTopTabNavigator } from "@react-navigation/material-top-tabs";
 
@@ -36,21 +37,6 @@ const initialStates = {
     loadingCharacters: true,
 }
 
-function HomeScreen() {
-    return (
-        <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
-            <Text>Home!</Text>
-        </View>
-    );
-}
-
-function SettingsScreen() {
-    return (
-        <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
-            <Text>Settings!</Text>
-        </View>
-    );
-}
 class MainContentScreen extends Component {
     constructor(props) {
         super(props)
@@ -85,7 +71,7 @@ class MainContentScreen extends Component {
         const chapters = await getContentData(content.type === "anime" ? content.relationships.episodes.links.related : content.relationships.chapters.links.related);
         console.log('CHAPTERS GOTTEN');
         this.setState({ chapters: chapters.message.data, loadingChapters: false });
-       
+
     }
 
     getGenres = async () => {
@@ -136,7 +122,7 @@ class MainContentScreen extends Component {
                 <ScrollView>
                     <View style={styles.row}>
                         <View style={styles.posterContainer}>
-                            <Image source={{ uri: content.attributes.posterImage.small }} style={{ height: 170, resizeMode: 'cover', marginBottom: 15, }} />
+                            <Image source={{ uri: content.attributes.posterImage ? content.attributes.posterImage.small : 'https://www.embarcadero.com/images/error.png' }} style={{ height: 170, resizeMode: 'cover', marginBottom: 15, }} />
                         </View>
                         <View style={styles.generalInfoContainer}>
                             <SectionText mainText="Main Title" secondaryText={content.attributes.titles[[Object.keys(content.attributes.titles)[0]]]} />
@@ -172,10 +158,21 @@ class MainContentScreen extends Component {
 
                     <SectionText mainText="Synopsis" secondaryText={content.attributes.synopsis} />
                     {
+                        content.attributes.youtubeVideoId ?
+                            <View style={{ width: '100%', height: 300, marginVertical: 20 }}>
+
+                                <WebView
+                                    javaScriptEnabled={true}
+                                    source={{ uri: `https://www.youtube.com/watch?v=${content.attributes.youtubeVideoId}` }}
+                                />
+                            </View> : null
+                    }
+                    {
                         this.state.loadingChapters || this.state.loadingCharacters ? null :
                             <Tab.Navigator
+                                sceneContainerStyle={{ backgroundColor: '#2F2F2F', maxHeight: '100%' }}
                                 tabBarOptions={{
-                                    style: { backgroundColor: 'transparent' },
+                                    style: { backgroundColor: '#2F2F2F' },
                                     activeTintColor: '#FFFFFF',
                                     inactiveTintColor: 'gray',
                                     indicatorStyle: { backgroundColor: '#F6F930' }

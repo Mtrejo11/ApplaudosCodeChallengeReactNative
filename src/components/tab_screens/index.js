@@ -5,8 +5,8 @@ const CharacterCard = props => {
     const chapter = props.title.data
     return (
         chapter.attributes.canonicalName ?
-            <View style={{ flexDirection: 'row', alignItems: 'center', marginBottom:20 }}>
-                <Image source={{ uri: chapter.attributes.image.original }} style={{ width: 50, height: 50, marginRight: 25, borderRadius:1 }} />
+            <View style={{ flexDirection: 'row', alignItems: 'center', marginBottom: 20 }}>
+                <Image source={{ uri: chapter.attributes.image ? chapter.attributes.image.original : 'https://www.embarcadero.com/images/error.png' }} style={{ width: 50, height: 50, marginRight: 25, borderRadius: 1 }} />
                 <Text style={styles.listText} >{chapter.attributes.canonicalName}</Text>
             </View> : null
     )
@@ -28,7 +28,7 @@ const ChapterCard = props => {
     // console.log('EACH CHAPTER', chapter);
     return (
         chapter.attributes.canonicalTitle ?
-            <View style={{ flexDirection: 'row' }}>
+            <View style={{ flexDirection: 'row', marginBottom: 20 }}>
                 <Text style={styles.listText}>{chapter.attributes.number}. </Text>
                 <Text style={styles.listText}>{chapter.attributes.canonicalTitle}</Text>
             </View> : null

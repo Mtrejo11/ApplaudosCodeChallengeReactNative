@@ -10,9 +10,9 @@ const Drawer = createDrawerNavigator();
 export default DrawerNavigationMenu = () => {
     return (
         <NavigationContainer>
-            <Drawer.Navigator initialRouteName="Home">
-                <Drawer.Screen name="Manga" component={StackNavigation} initialParams={{ type: 'manga', }} />
+            <Drawer.Navigator initialRouteName="Anime">
                 <Drawer.Screen name="Anime" component={StackNavigation} initialParams={{ type: 'anime' }} />
+                <Drawer.Screen name="Manga" component={StackNavigation} initialParams={{ type: 'manga', }} />
             </Drawer.Navigator>
         </NavigationContainer>
     );

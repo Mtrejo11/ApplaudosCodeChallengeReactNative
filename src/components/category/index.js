@@ -6,7 +6,7 @@ const ContentContainer = (props) => {
     const { content } = props;
     return (
         <TouchableOpacity style={styles.categoryCard} onPress={() => props.navigationHandler(content)}>
-            <ImageBackground source={{ uri: content.attributes.posterImage.tiny }} style={{ height: 150, resizeMode: 'contain', borderRadius: 1, justifyContent: 'flex-end', alignItems: 'center' }}>
+            <ImageBackground source={{ uri: content.attributes.posterImage ? content.attributes.posterImage.tiny : 'https://www.embarcadero.com/images/error.png' }} style={{ height: 150, resizeMode: 'contain', borderRadius: 1, justifyContent: 'flex-end', alignItems: 'center' }}>
                 <Text numberOfLines={2} style={styles.titleText} >{content.attributes.canonicalTitle}</Text>
             </ImageBackground>
         </TouchableOpacity>
