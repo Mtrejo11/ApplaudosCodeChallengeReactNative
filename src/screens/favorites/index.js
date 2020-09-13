@@ -45,7 +45,7 @@ class MainContentScreen extends Component {
                         <FlatList
                             data={this.props.favorites}
                             extraData={this.props.favorites}
-                            style={{ width: '100%', marginTop: 50 }}
+                            style={{ width: '100%' }}
                             keyExtractor={(element, index) => `${element.id}-${index}`}
                             numColumns={3}
                             renderItem={title => <TitleCard title={title.item} navigationHandler={this._navigateDetailHandler} fav={true} />}
@@ -66,8 +66,7 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         alignItems: 'flex-start',
         justifyContent: 'flex-start',
-        position: 'absolute',
-        zIndex: 10,
+        paddingHorizontal: 5,
         backgroundColor: '#2F2F2F'
     },
     menuButton: {

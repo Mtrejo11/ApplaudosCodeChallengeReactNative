@@ -17,16 +17,17 @@ const ContentContainer = (props) => {
 const CategorySection = (props) => {
     const { category } = props;
     return (
-        <View style={styles.sectionContainer}>
-            <Text style={styles.categoryTitle}>{category.title}</Text>
-            <FlatList
-                data={category.content}
-                horizontal
-                extraData={props.dataFlag}
-                keyExtractor={(element) => element.attributes.slug}
-                renderItem={(element) => <ContentContainer content={element.item} navigationHandler={props.navigationHandler} />}
-            />
-        </View>
+        category.content.length > 0 ?
+            <View style={styles.sectionContainer}>
+                <Text style={styles.categoryTitle}>{category.title}</Text>
+                <FlatList
+                    data={category.content}
+                    horizontal
+                    extraData={props.dataFlag}
+                    keyExtractor={(element) => element.attributes.slug}
+                    renderItem={(element) => <ContentContainer content={element.item} navigationHandler={props.navigationHandler} />}
+                />
+            </View> : null
     )
 }
 

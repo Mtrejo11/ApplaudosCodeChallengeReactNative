@@ -23,9 +23,9 @@ export const getContentList = async (reference, type) => {
 }
 
 
-export const getCategories = async () => {
+export const getCategories = async (offset) => {
     try {
-        const url = `https://kitsu.io/api/edge/categories?page[limit]=3`
+        const url = `https://kitsu.io/api/edge/categories?page[limit]=5&page[offset]=${offset}`
         const response = await fetch(url, {
             method: "GET",
             headers: {

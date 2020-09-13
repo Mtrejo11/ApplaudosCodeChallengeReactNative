@@ -28,6 +28,9 @@ const initialStates = {
     changeFlag: false,
     search: '',
     searchResults: [],
+    categoriesStep: 0,
+    loadingContent: true,
+    fetchingApi: false
 }
 
 class MainContentScreen extends Component {
@@ -44,59 +47,65 @@ class MainContentScreen extends Component {
     }
 
     getCategories = async () => {
-        console.log('GETTING CATEGORIES', this.props.route.params.type);
-        const categories = await getCategories();
-        if (categories.status) {
-            const currentCategories = [];
-            categories.message.data.forEach(async category => {
-                currentCategories.push({
-                    categoryId: category.id,
-                    reference: category.links.self,
-                    title: category.attributes.title,
-                    content: [],
-                    relationships: category.relationships,
+        if (!this.state.fetchingApi) {
+            console.log('fectching api');
+            const categories = await getCategories(this.state.categoriesStep);
+            if (categories.status) {
+                const currentCategories = this.state.categoriesStep === 0 ? [] : this.props.route.params.type === 'anime' ? this.props.animeCategories : this.props.mangaCategories;
+                categories.message.data.forEach(async category => {
+                    currentCategories.push({
+                        categoryId: category.id,
+                        reference: category.links.self,
+                        title: category.attributes.title,
+                        content: [],
+                        relationships: category.relationships,
+                    });
                 });
-            });
-            this.props.dispatch({
-                type: GET_CATEGORIES,
-                payload: {
-                    categories: currentCategories
-                }
-            });
-        } else {
-            console.log('SOMETHING WENT WRONG', categories.message);
-        }
-    }
+                this.props.dispatch({
+                    type: GET_CATEGORIES,
+                    payload: {
+                        [this.props.route.params.type === 'anime' ? 'animeCategories' : 'mangaCategories']: currentCategories
+                    }
+                });
+                await this.loadCategoryContent()
+                this.setState({ categoriesStep: this.state.categoriesStep + 5, loadingContent: false, fetchingApi: false, })
+                console.log('FINISHED fectching api');
 
-    getContentCharacters = async () => {
-        return 'CHARACTERS'
+
+            } else {
+                console.log('SOMETHING WENT WRONG', categories.message);
+                await this.loadCategoryContent()
+                this.setState({ loadingContent: false, fetchingApi: false, })
+
+
+            }
+        }
     }
 
     _navigateDetailHandler = (data) => {
         this.props.navigation.navigate('Details', { content: data })
     }
 
-    componentDidMount() {
-        console.log('DIDMOUNT', this.props.route.params.type);
-        this.loadCategoryContent()
-    }
 
     loadCategoryContent = async () => {
-        const categoriesSaved = this.props.categories
+        console.log('FETCHING EACH CONTENT');
+        const categoriesSaved = this.props.route.params.type === 'anime' ? this.props.animeCategories : this.props.mangaCategories
         let fullContent = []
-        categoriesSaved.forEach(async (category, index) => {
-            const categoryContent = await getContentList(category.reference, this.props.route.params.type)
+        for (let index = this.state.categoriesStep; index < this.state.categoriesStep + 5; index++) {
+            console.log('inside for');
+            const categoryContent = await getContentList(categoriesSaved[index].reference, this.props.route.params.type)
             categoriesSaved[index].content = categoryContent.message.data;
             fullContent = fullContent.concat(categoriesSaved[index].content);
             this.props.dispatch({
                 type: GET_CATEGORIES,
                 payload: {
-                    categories: categoriesSaved,
+                    [this.props.route.params.type === 'anime' ? 'animeCategories' : 'mangaCategories']: categoriesSaved,
                     [this.props.route.params.type]: fullContent
                 }
             });
             this.setState({ changeFlag: !this.state.changeFlag })
-        })
+        }
+
     }
 
     toggleAnimation = (opt) => {
@@ -120,7 +129,6 @@ class MainContentScreen extends Component {
         }
     }
 
-
     _searchHandler = (search) => {
         const content = this.props[this.props.route.params.type];
         let foundTitles = [];
@@ -133,9 +141,16 @@ class MainContentScreen extends Component {
         this.setState({ search, searchResults: foundTitles, });
     };
 
+    _drawerHandler = () => {
+        console.log('DRAWER CLICKED');
+        this.props.navigation.openDrawer()
+    }
 
-    componentWillUnmount() {
-        console.log('UMONUNTING COMPONENT', this.props.route.params.type);
+    _scrollEndHandler = () => {
+        this.setState({ fetchingApi: true, })
+        console.log('Reached end');
+
+        this.getCategories()
     }
 
     render() {
@@ -147,7 +162,7 @@ class MainContentScreen extends Component {
             <SafeAreaView style={styles.mainContainer}>
                 <View style={{ marginBottom: 10 }}>
                     <View style={styles.topContainer}>
-                        <TouchableOpacity style={styles.menuButton} onPress={() => this.props.navigation.openDrawer()}>
+                        <TouchableOpacity style={styles.menuButton} onPress={this._drawerHandler}>
                             <Image source={menuIcon} style={{ width: 30, height: 30 }} />
                         </TouchableOpacity>
                         <SearchBar
@@ -183,11 +198,23 @@ class MainContentScreen extends Component {
                         }
                     </Animated.View>
                 </View>
-                <ScrollView  >
+                <ScrollView onScrollEndDrag={this._scrollEndHandler} >
                     {
-                        this.props.categories.map(category =>
-                            <CategorySection key={category.title + category.categoryId} category={category} dataFlag={this.state.changeFlag} navigationHandler={this._navigateDetailHandler} />
-                        )
+                        this.state.loadingContent ?
+                            <ActivityIndicator size="large" color="#D2F898" style={{ marginTop: '30%' }} /> :
+                            <>
+                                {this.props.route.params.type === 'anime' ?
+                                    this.props.animeCategories.map(category =>
+                                        <CategorySection key={category.title + category.categoryId} category={category} dataFlag={this.state.changeFlag} navigationHandler={this._navigateDetailHandler} />
+                                    ) :
+                                    this.props.mangaCategories.map(category =>
+                                        <CategorySection key={category.title + category.categoryId} category={category} dataFlag={this.state.changeFlag} navigationHandler={this._navigateDetailHandler} />
+                                    )}
+                                {
+                                    this.state.fetchingApi ? <ActivityIndicator size="small" color="#D2F898" style={{ marginTop: 20 }} /> : null
+                                }
+
+                            </>
                     }
                 </ScrollView>
             </SafeAreaView>
@@ -230,7 +257,8 @@ const styles = StyleSheet.create({
 const mapStateToProps = (state) => {
     return {
         initialType: state.classification.initialType,
-        categories: state.classification.categories,
+        mangaCategories: state.classification.mangaCategories,
+        animeCategories: state.classification.animeCategories,
         anime: state.classification.anime,
         manga: state.classification.manga,
 

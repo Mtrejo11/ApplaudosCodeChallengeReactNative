@@ -1,7 +1,8 @@
 import { ADD_FAVORITE, DELETE_FAVORITE, GET_CATEGORIES } from '../actions'
 const INITIAL_STATE = {
     initialType: 'anime',
-    categories: [],
+    animeCategories: [],
+    mangaCategories: [],
     animes: [],
     mangas: [],
     favorites: [],

@@ -27,7 +27,6 @@ export const CharactersTab = (props) => {
 
 const ChapterCard = props => {
     const chapter = props.title
-    // console.log('EACH CHAPTER', chapter);
     return (
             <View style={{ flexDirection: 'row', marginBottom: 20 }}>
                 <Text style={styles.listText}>{chapter.attributes.number}. </Text>
@@ -37,7 +36,6 @@ const ChapterCard = props => {
 }
 
 export const ChaptersTab = (props) => {
-    console.log('CHAPTERS', props.route.params.chapters);
     return (
         <View style={styles.mainContainer}>
             {
