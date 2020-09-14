@@ -102,8 +102,6 @@ class MainContentScreen extends Component {
         const { content } = this.props.route.params;
         const currentFavorites = this.props.favorites;
         currentFavorites.push(content);
-        console.log('CURRENT FAVS', currentFavorites.length);
-
         this.props.dispatch({
             type: ADD_FAVORITE,
             payload: {
@@ -119,7 +117,6 @@ class MainContentScreen extends Component {
         const currentFavorites = this.props.favorites;
         const index = currentFavorites.findIndex(title => title.id === content.id);
         currentFavorites.splice(index, 1);
-        console.log('CURRENT FAVS', currentFavorites.length);
         this.props.dispatch({
             type: DELETE_FAVORITE,
             payload: {

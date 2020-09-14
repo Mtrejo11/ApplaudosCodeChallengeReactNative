@@ -12,16 +12,21 @@ import {
     SafeAreaView,
     ScrollView, Image, Dimensions
 } from "react-native";
+
+// Redux actions
 import { GET_CATEGORIES } from "../../states/actions";
+
+//API calls
 import { getCategories, getContentList } from "../../api/requests";
 
+//Components
 import CategorySection from '../../components/category'
 import TitleCard from "../../components/title_card";
 import { SearchBar } from "react-native-elements";
-import menuIcon from '../../assets/menu.png'
 import Spinner from "react-native-spinkit";
-import clearIcon from '../../assets/clear_filter.png'
 
+//Images
+import menuIcon from '../../assets/menu.png'
 
 const screenHeight = Dimensions.get('window').height
 
@@ -85,7 +90,6 @@ class MainContentScreen extends Component {
 
     loadCategoryContent = async () => {
         const categoriesSaved = this.props.route.params.type === 'anime' ? this.props.animeCategories : this.props.mangaCategories
-        console.log('CATEGORIES SAVED', categoriesSaved);
         let fullContent = []
         if (categoriesSaved.length > 0) {
             for (let index = this.state.categoriesStep; index < this.state.categoriesStep + 5; index++) {
