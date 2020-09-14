@@ -165,6 +165,7 @@ class MainContentScreen extends Component {
                             placeholder="Search"
                             platform='ios'
                             onChangeText={this._searchHandler}
+                            inputStyle={{ color: '#FCFCFC' }}
                             cancelIcon={null}
                             value={this.state.search}
                             containerStyle={{ backgroundColor: 'trasnparent', padding: 0, width: '85%', height: 40 }}
