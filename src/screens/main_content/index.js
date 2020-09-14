@@ -102,9 +102,6 @@ class MainContentScreen extends Component {
                     });
                     this.setState({ changeFlag: !this.state.changeFlag })
                 }
-                else {
-                    console.log('ERROR FETCHING CATEGORY');
-                }
             }
         }
 

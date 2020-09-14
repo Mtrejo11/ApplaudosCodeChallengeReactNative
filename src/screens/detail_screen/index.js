@@ -3,11 +3,7 @@ import { connect } from "react-redux";
 import {
     Text,
     View,
-    Button,
-    FlatList,
-    TouchableOpacity,
-    ActivityIndicator,
-    Dimensions,
+    Linking,
     StyleSheet,
     SafeAreaView,
     ScrollView
@@ -21,7 +17,7 @@ const Tab = createMaterialTopTabNavigator();
 
 import { getContentData, getEachDetail } from "../../api/requests";
 import SectionText from "../../components/section_text";
-import { Image, CheckBox } from "react-native-elements";
+import { Image, CheckBox, SocialIcon } from "react-native-elements";
 import { ADD_FAVORITE, DELETE_FAVORITE } from "../../states/actions";
 
 import { ChaptersTab, CharactersTab } from "../../components/tab_screens";
@@ -133,6 +129,10 @@ class MainContentScreen extends Component {
         })
     }
 
+    _watchYoutubeHandler = async (id) => {
+        const url = `https://www.youtube.com/watch?v=${id}`
+        await Linking.openURL(url);
+    }
 
     render() {
         const { content } = this.props.route.params;
@@ -176,10 +176,17 @@ class MainContentScreen extends Component {
                     </View>
 
                     <SectionText mainText="Synopsis" secondaryText={content.attributes.synopsis} />
+
                     {
                         content.attributes.youtubeVideoId ?
                             <View style={{ width: '100%', height: 300, marginVertical: 20 }}>
-
+                                <SocialIcon
+                                    title='Watch on YotuTube'
+                                    button
+                                    type='youtube'
+                                    onPress={() => this._watchYoutubeHandler(content.attributes.youtubeVideoId)}
+                                    style={{ width: '60%', marginBottom: 20, alignSelf: 'center' }}
+                                />
                                 <WebView
                                     javaScriptEnabled={true}
                                     source={{ uri: `https://www.youtube.com/watch?v=${content.attributes.youtubeVideoId}` }}
