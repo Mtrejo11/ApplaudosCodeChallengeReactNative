@@ -1,6 +1,5 @@
 import React from "react";
-import { View, Text, FlatList, StyleSheet, ActivityIndicator, TouchableOpacity, ImageBackground } from "react-native";
-import { Image } from "react-native-elements";
+import { View, Text, FlatList, StyleSheet, TouchableOpacity, ImageBackground } from "react-native";
 
 const ContentContainer = (props) => {
     const { content } = props;

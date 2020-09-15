@@ -7,7 +7,6 @@ const SectionText = props => {
             <Text style={styles.mainText}>{props.mainText}</Text>
             <Text style={styles.secondaryText}>{props.secondaryText ? props.secondaryText : 'N/E'}</Text>
         </View>
-
     )
 }
 

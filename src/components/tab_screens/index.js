@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import { Image, StyleSheet, Text, View } from 'react-native'
 
 const CharacterCard = props => {
@@ -28,10 +28,10 @@ export const CharactersTab = (props) => {
 const ChapterCard = props => {
     const chapter = props.title
     return (
-            <View style={{ flexDirection: 'row', marginBottom: 20 }}>
-                <Text style={styles.listText}>{chapter.attributes.number}. </Text>
-                <Text style={styles.listText}>{chapter.attributes.canonicalTitle ? chapter.attributes.canonicalTitle : 'Title not available'}</Text>
-            </View> 
+        <View style={{ flexDirection: 'row', marginBottom: 20 }}>
+            <Text style={styles.listText}>{chapter.attributes.number}. </Text>
+            <Text style={styles.listText}>{chapter.attributes.canonicalTitle ? chapter.attributes.canonicalTitle : 'Title not available'}</Text>
+        </View>
     )
 }
 

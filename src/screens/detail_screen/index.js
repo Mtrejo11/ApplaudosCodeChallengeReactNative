@@ -7,7 +7,6 @@ import {
     SafeAreaView,
     ScrollView
 } from "react-native";
-import { WebView } from 'react-native-webview';
 import YouTube from 'react-native-youtube';
 
 import { createMaterialTopTabNavigator } from "@react-navigation/material-top-tabs";
