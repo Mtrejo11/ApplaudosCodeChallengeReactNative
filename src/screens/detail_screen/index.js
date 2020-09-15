@@ -8,6 +8,7 @@ import {
     ScrollView
 } from "react-native";
 import { WebView } from 'react-native-webview';
+import YouTube from 'react-native-youtube';
 
 import { createMaterialTopTabNavigator } from "@react-navigation/material-top-tabs";
 
@@ -164,12 +165,10 @@ const MainContentScreen = props => {
                         <SectionText mainText="Airing Status" secondaryText={content.attributes.status} />
                     </View>
                 </View>
-
                 <SectionText mainText="Synopsis" secondaryText={content.attributes.synopsis} />
-
                 {
                     content.attributes.youtubeVideoId ?
-                        <View style={{ width: '100%', height: 300, marginVertical: 20 }}>
+                        <View style={{ width: '100%', marginVertical: 20 }}>
                             <SocialIcon
                                 title='Watch on YotuTube'
                                 button
@@ -177,9 +176,12 @@ const MainContentScreen = props => {
                                 onPress={() => _watchYoutubeHandler(content.attributes.youtubeVideoId)}
                                 style={{ width: '60%', marginBottom: 20, alignSelf: 'center' }}
                             />
-                            <WebView
-                                javaScriptEnabled={true}
-                                source={{ uri: `https://www.youtube.com/watch?v=${content.attributes.youtubeVideoId}` }}
+                            <YouTube
+                                videoId={content.attributes.youtubeVideoId}
+                                play
+                                fullscreen={false}
+                                loop
+                                style={{ alignSelf: 'stretch', height: 300 }}
                             />
                         </View> : null
                 }
