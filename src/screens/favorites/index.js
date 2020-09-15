@@ -1,9 +1,8 @@
-import React, { Component } from "react";
+import React from "react";
 import { connect } from "react-redux";
 import {
     Text,
     View,
-    FlatList,
     TouchableOpacity,
     StyleSheet,
     SafeAreaView,
@@ -12,46 +11,36 @@ import {
 import TitleCard from "../../components/title_card";
 import menuIcon from '../../assets/menu.png'
 
-const initialStates = {}
 
-class MainContentScreen extends Component {
-    constructor(props) {
-        super(props)
-        this.state = {
-            ...initialStates,
-
-        }
+const FavoritesScreen = props => {
+    const _navigateDetailHandler = (data) => {
+        props.navigation.navigate('Details', { content: data })
     }
 
-    _navigateDetailHandler = (data) => {
-        this.props.navigation.navigate('Details', { content: data })
-    }
-
-    render() {
-        return (
-            <SafeAreaView style={styles.mainContainer}>
-                <View style={{ marginBottom: 10 }}>
-                    <View style={styles.topContainer}>
-                        <TouchableOpacity style={styles.menuButton} onPress={() => this.props.navigation.openDrawer()}>
-                            <Image source={menuIcon} style={{ width: 30, height: 30 }} />
-                        </TouchableOpacity>
-                    </View>
-
+    return (
+        <SafeAreaView style={styles.mainContainer}>
+            <View style={{ marginBottom: 10 }}>
+                <View style={styles.topContainer}>
+                    <TouchableOpacity style={styles.menuButton} onPress={() => props.navigation.openDrawer()}>
+                        <Image source={menuIcon} style={{ width: 30, height: 30 }} />
+                    </TouchableOpacity>
                 </View>
-                {
-                    this.props.favorites.length > 0 ? <>
-                        <Text style={[styles.searchText, { fontSize: 12 }]}>Recently {this.props.initialType}</Text>
-                        <View style={{ flexDirection: 'row', flexWrap: 'wrap' }}>
-                            {
-                                this.props.favorites.map((title, index) => <TitleCard title={title} key={`${title.id}-${index}`} navigationHandler={this._navigateDetailHandler} fav={true} />)
-                            }
-                        </View>
-                    </>
-                        : <Text style={[styles.searchText, { marginTop: 60, textAlign: 'center' }]}>No favorite content found.</Text>
-                }
-            </SafeAreaView>
-        )
-    }
+
+            </View>
+            {
+                props.favorites.length > 0 ? <>
+                    <Text style={[styles.searchText, { fontSize: 12 }]}>Recently {props.initialType}</Text>
+                    <View style={{ flexDirection: 'row', flexWrap: 'wrap' }}>
+                        {
+                            props.favorites.map((title, index) => <TitleCard title={title} key={`${title.id}-${index}`} navigationHandler={_navigateDetailHandler} fav={true} />)
+                        }
+                    </View>
+                </>
+                    : <Text style={[styles.searchText, { marginTop: 60, textAlign: 'center' }]}>No favorite content found.</Text>
+            }
+        </SafeAreaView>
+    )
+
 }
 
 const styles = StyleSheet.create({
@@ -89,4 +78,4 @@ const mapStateToProps = (state) => {
     }
 }
 
-export default connect(mapStateToProps)(MainContentScreen);
+export default connect(mapStateToProps)(FavoritesScreen);

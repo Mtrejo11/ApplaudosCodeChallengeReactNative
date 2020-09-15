@@ -1,5 +1,5 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
+import React, { Component, useEffect, useState } from "react";
+import { connect, useSelector } from "react-redux";
 import {
     Text,
     View,
@@ -30,33 +30,34 @@ import menuIcon from '../../assets/menu.png'
 
 const screenHeight = Dimensions.get('window').height
 
-const initialStates = {
-    changeFlag: false,
-    search: '',
-    searchResults: [],
-    categoriesStep: 0,
-    loadingContent: true,
-    fetchingApi: false
-}
 
-class MainContentScreen extends Component {
-    constructor(props) {
-        super(props)
-        this.state = {
-            ...initialStates,
-            animationValue: new Animated.Value(0),
-            viewState: true
+const MainContentScreen = props => {
+    const { animeCategories } = useSelector(state => ({ animeCategories: state.classification.animeCategories }))
+    const { mangaCategories } = useSelector(state => ({ mangaCategories: state.classification.mangaCategories }))
+    const { anime } = useSelector(state => ({ anime: state.classification.anime }))
+    const { manga } = useSelector(state => ({ manga: state.classification.manga }))
+
+    const [changeFlag, setChangeFlag] = useState(false)
+    const [animationValue, setAnimationValue] = useState(new Animated.Value(0))
+    const [viewState, setViewState] = useState(true)
+    const [loadingContent, setLoadingContent] = useState(true)
+    const [search, setSearch] = useState('')
+    const [categoriesStep, setCategoriesStep] = useState(0)
+    const [searchResults, setSearchResults] = useState([])
+    const [fetchingApi, setFetchingApi] = useState(true)
 
 
-        }
-        this.getCategories()
-    }
+    useEffect(() => {
+        fetchCategories()
+    }, [])
 
-    getCategories = async () => {
-        if (!this.state.fetchingApi) {
-            const categories = await getCategories(this.state.categoriesStep);
+
+    const fetchCategories = async () => {
+        if (fetchingApi) {
+            setFetchingApi(false)
+            const categories = await getCategories(categoriesStep);
             if (categories.status) {
-                const currentCategories = this.state.categoriesStep === 0 ? [] : this.props.route.params.type === 'anime' ? this.props.animeCategories : this.props.mangaCategories;
+                const currentCategories = categoriesStep === 0 ? [] : props.route.params.type === 'anime' ? animeCategories : mangaCategories;
                 categories.message.data.forEach(async category => {
                     currentCategories.push({
                         categoryId: category.id,
@@ -66,74 +67,84 @@ class MainContentScreen extends Component {
                         relationships: category.relationships,
                     });
                 });
-                this.props.dispatch({
+                props.dispatch({
                     type: GET_CATEGORIES,
                     payload: {
-                        [this.props.route.params.type === 'anime' ? 'animeCategories' : 'mangaCategories']: currentCategories
+                        [props.route.params.type === 'anime' ? 'animeCategories' : 'mangaCategories']: currentCategories
                     }
                 });
-                await this.loadCategoryContent()
-                this.setState({ categoriesStep: this.state.categoriesStep + 5, loadingContent: false, fetchingApi: false, })
+                await loadCategoryContent()
+                setLoadingContent(false)
             } else {
                 ToastAndroid.show("Couldn't connect to the server", ToastAndroid.SHORT);
-                await this.loadCategoryContent();
-                this.setState({ loadingContent: false, fetchingApi: false, });
-
+                await loadCategoryContent();
+                setLoadingContent(false)
             }
         }
     }
 
-    _navigateDetailHandler = (data) => {
-        this.props.navigation.navigate('Details', { content: data })
+
+    const _navigateDetailHandler = (data) => {
+        props.navigation.navigate('Details', { content: data })
     }
 
 
-    loadCategoryContent = async () => {
-        const categoriesSaved = this.props.route.params.type === 'anime' ? this.props.animeCategories : this.props.mangaCategories
-        let fullContent = []
-        if (categoriesSaved.length > 0) {
-            for (let index = this.state.categoriesStep; index < this.state.categoriesStep + 5; index++) {
-                const categoryContent = await getContentList(categoriesSaved[index].reference, this.props.route.params.type)
-                if (categoryContent.status) {
-                    categoriesSaved[index].content = categoryContent.message.data;
-                    fullContent = fullContent.concat(categoriesSaved[index].content);
-                    this.props.dispatch({
-                        type: GET_CATEGORIES,
-                        payload: {
-                            [this.props.route.params.type === 'anime' ? 'animeCategories' : 'mangaCategories']: categoriesSaved,
-                            [this.props.route.params.type]: fullContent
-                        }
-                    });
-                    this.setState({ changeFlag: !this.state.changeFlag })
+    const loadCategoryContent = async () => {
+        if (fetchingApi) {
+
+            const categoriesSaved = props.route.params.type === 'anime' ? animeCategories : mangaCategories
+            let fullContent = []
+            if (categoriesSaved.length > 0) {
+                const steps = categoriesStep
+                for (let index = categoriesStep; index < steps + 5; index++) {
+                    const categoryContent = await getContentList(categoriesSaved[index].reference, props.route.params.type)
+                    if (categoryContent.status) {
+                        categoriesSaved[index].content = categoryContent.message.data;
+                        fullContent = fullContent.concat(categoriesSaved[index].content);
+                        props.dispatch({
+                            type: GET_CATEGORIES,
+                            payload: {
+                                [props.route.params.type === 'anime' ? 'animeCategories' : 'mangaCategories']: categoriesSaved,
+                                [props.route.params.type]: fullContent
+                            }
+                        });
+                        setChangeFlag(!changeFlag)
+                    }
+
                 }
+                setCategoriesStep(categoriesStep + 5)
+                setFetchingApi(true)
             }
         }
 
     }
 
-    toggleAnimation = (opt) => {
+    const toggleAnimation = (opt) => {
 
         if (opt) {
-            Animated.timing(this.state.animationValue, {
+            Animated.timing(animationValue, {
                 toValue: screenHeight,
                 duration: 500,
                 useNativeDriver: false
             }).start(() => {
-                this.setState({ viewState: false })
+                setViewState(false)
             });
         }
         else {
-            Animated.timing(this.state.animationValue, {
+            Animated.timing(animationValue, {
                 toValue: 0,
                 duration: 500,
                 useNativeDriver: false
-            }).start(this.setState({ viewState: true, search: '' })
+            }).start(() => {
+                setViewState(true)
+                setSearch('')
+            }
             );
         }
     }
 
-    _searchHandler = (search) => {
-        const content = this.props[this.props.route.params.type];
+    const _searchHandler = (search) => {
+        const content = props.route.params.type === 'anime' ? anime : manga
         let foundTitles = [];
         content.forEach(title => {
             let tmp = title.attributes.canonicalTitle.indexOf(search)
@@ -141,124 +152,122 @@ class MainContentScreen extends Component {
                 foundTitles.push(title);
             }
         });
-        this.setState({ search, searchResults: foundTitles, });
+        setSearch(search)
+        setSearchResults(foundTitles)
     };
 
-    _drawerHandler = () => {
-        this.props.navigation.openDrawer()
+    const _drawerHandler = () => {
+        props.navigation.openDrawer()
     }
 
-    _scrollEndHandler = () => {
-        this.setState({ fetchingApi: true, })
-        this.getCategories();
+    const _scrollEndHandler = () => {
+        fetchCategories();
+    }
+    const animatedStyle = {
+        width: '100%',
+        height: animationValue
     }
 
-    render() {
-        const animatedStyle = {
-            width: '100%',
-            height: this.state.animationValue
-        }
-        return (
-            <SafeAreaView style={styles.mainContainer}>
-                <View style={{ marginBottom: 10 }}>
-                    <View style={styles.topContainer}>
-                        <TouchableOpacity style={styles.menuButton} onPress={this._drawerHandler}>
-                            <Image source={menuIcon} style={{ width: 30, height: 30 }} />
-                        </TouchableOpacity>
-                        <SearchBar
-                            placeholder="Search"
-                            platform='ios'
-                            onChangeText={this._searchHandler}
-                            inputStyle={{ color: '#FCFCFC' }}
-                            cancelIcon={null}
-                            value={this.state.search}
-                            containerStyle={{ backgroundColor: 'trasnparent', padding: 0, width: '85%', height: 40 }}
-                            inputContainerStyle={{ backgroundColor: 'trasnparent', margin: 0, height: 30 }}
-                            onFocus={() => this.toggleAnimation(true)}
-                            onCancel={() => this.toggleAnimation(false)}
-                        />
+    return (
+        <SafeAreaView style={styles.mainContainer}>
+            <View style={{ paddingHorizontal: 10 }}>
+                <View style={styles.topContainer}>
+                    <TouchableOpacity style={styles.menuButton} onPress={_drawerHandler}>
+                        <Image source={menuIcon} style={{ width: 30, height: 30 }} />
+                    </TouchableOpacity>
+                    <SearchBar
+                        placeholder="Search"
+                        platform='ios'
+                        onChangeText={_searchHandler}
+                        inputStyle={{ color: '#FCFCFC' }}
+                        cancelIcon={null}
+                        value={search}
+                        containerStyle={{ backgroundColor: 'trasnparent', padding: 0, width: '85%', height: 40 }}
+                        inputContainerStyle={{ backgroundColor: 'trasnparent', margin: 0, height: 30 }}
+                        onFocus={() => toggleAnimation(true)}
+                        onCancel={() => toggleAnimation(false)}
+                    />
 
-                    </View>
-                    <Animated.View style={[styles.animatedBox, animatedStyle]}>
-                        {
-                            !this.state.viewState ?
-                                <>
-                                    {
-                                        this.state.searchResults.length > 0 ? null : <Text style={styles.searchText}>No results</Text>
-                                    }
-                                    <FlatList
-                                        data={this.state.searchResults}
-                                        extraData={this.state.searchResults}
-                                        style={{ width: '100%', marginTop: 20 }}
-                                        keyExtractor={(element, index) => `${element.id}-${index}`}
-                                        numColumns={3}
-                                        renderItem={title => <TitleCard title={title.item} navigationHandler={this._navigateDetailHandler} />}
-                                    />
-                                </>
-                                : null
-                        }
-                    </Animated.View>
                 </View>
-                <ScrollView onScrollEndDrag={this._scrollEndHandler} >
+                <Animated.View style={[styles.animatedBox, animatedStyle]}>
                     {
-                        this.state.loadingContent ?
-                            <View style={{ width: '100%', justifyContent: 'center', alignItems: 'center' }}>
-                                <Spinner style={{ marginTop: '40%' }} isVisible={true} size={200} type={'Bounce'} color={'#D2F898'} />
-                            </View>
-                            :
+                        !viewState ?
                             <>
-                                {this.props.route.params.type === 'anime' ?
-                                    this.props.animeCategories.length > 0 ?
-                                        this.props.animeCategories.map(category =>
-                                            <CategorySection key={category.title + category.categoryId} category={category} dataFlag={this.state.changeFlag} navigationHandler={this._navigateDetailHandler} />
-                                        ) :
-                                        <>
-                                            <Text style={styles.failureText}>Could't retrieve {this.props.route.params.type} information</Text>
-                                            <TouchableOpacity onPress={this.getCategories}>
-                                                <Text style={[styles.failureText, { color: '#F6F930', marginTop: 5 }]}>Retry</Text>
-                                            </TouchableOpacity>
-                                        </>
-                                    :
-                                    this.props.mangaCategories.length > 0 ?
-                                        this.props.mangaCategories.map(category =>
-                                            <CategorySection key={category.title + category.categoryId} category={category} dataFlag={this.state.changeFlag} navigationHandler={this._navigateDetailHandler} />
-                                        ) :
-                                        <>
-                                            <Text style={styles.failureText}>Could't retrieve {this.props.route.params.type} information</Text>
-                                            <TouchableOpacity onPress={this.getCategories}>
-                                                <Text style={[styles.failureText, { color: '#F6F930', marginTop: 5 }]}>Retry</Text>
-                                            </TouchableOpacity>
-                                        </>
-                                }
                                 {
-                                    this.state.fetchingApi ? <ActivityIndicator size="small" color="#D2F898" style={{ marginTop: 20 }} /> : null
+                                    searchResults.length > 0 ? null : <Text style={styles.searchText}>No results</Text>
                                 }
-
+                                <FlatList
+                                    data={searchResults}
+                                    extraData={searchResults}
+                                    style={{ width: '100%', marginTop: 5 }}
+                                    keyExtractor={(element, index) => `${element.id}-${index}`}
+                                    numColumns={3}
+                                    renderItem={title => <TitleCard title={title.item} navigationHandler={_navigateDetailHandler} />}
+                                />
                             </>
+                            : null
                     }
-                </ScrollView>
-            </SafeAreaView>
-        )
-    }
+                </Animated.View>
+            </View>
+            <ScrollView style={{ paddingHorizontal: 10 }} showsVerticalScrollIndicator={false} onScrollEndDrag={_scrollEndHandler} >
+                {
+                    loadingContent ?
+                        <View style={{ width: '100%', justifyContent: 'center', alignItems: 'center' }}>
+                            <Spinner style={{ marginTop: '40%' }} isVisible={true} size={200} type={'Bounce'} color={'#D2F898'} />
+                        </View>
+                        :
+                        <>
+                            {props.route.params.type === 'anime' ?
+                                animeCategories.length > 0 ?
+                                    animeCategories.map(category =>
+                                        <CategorySection key={category.title + category.categoryId} category={category} dataFlag={changeFlag} navigationHandler={_navigateDetailHandler} />
+                                    ) :
+                                    <>
+                                        <Text style={styles.failureText}>Could't retrieve {props.route.params.type} information</Text>
+                                        <TouchableOpacity onPress={fetchCategories}>
+                                            <Text style={[styles.failureText, { color: '#F6F930', marginTop: 5 }]}>Retry</Text>
+                                        </TouchableOpacity>
+                                    </>
+                                :
+                                mangaCategories.length > 0 ?
+                                    mangaCategories.map(category =>
+                                        <CategorySection key={category.title + category.categoryId} category={category} dataFlag={changeFlag} navigationHandler={_navigateDetailHandler} />
+                                    ) :
+                                    <>
+                                        <Text style={styles.failureText}>Could't retrieve {props.route.params.type} information</Text>
+                                        <TouchableOpacity onPress={fetchCategories}>
+                                            <Text style={[styles.failureText, { color: '#F6F930', marginTop: 5 }]}>Retry</Text>
+                                        </TouchableOpacity>
+                                    </>
+                            }
+                            {
+                                fetchingApi ? <ActivityIndicator size="small" color="#D2F898" style={{ marginTop: 20 }} /> : null
+                            }
+
+                        </>
+                }
+            </ScrollView>
+        </SafeAreaView>
+    )
+
 }
 
 const styles = StyleSheet.create({
     mainContainer: {
         flex: 1,
         backgroundColor: '#2F2F2F',
-        padding: 15
+        padding: 35,
     },
     topContainer: {
         flexDirection: 'row',
         alignItems: 'flex-start',
         justifyContent: 'flex-start',
-        position: 'absolute',
-        zIndex: 10,
+        marginTop: 10,
         backgroundColor: '#2F2F2F'
     },
     animatedBox:
     {
-        marginTop: 50,
+        marginTop: 25,
         width: 50,
         height: 0,
         alignItems: 'center'

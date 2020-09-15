@@ -14,6 +14,8 @@ target 'ApplaudosCodeChallengeReactNative' do
 
   pod 'react-native-spinkit', :path => '../node_modules/react-native-spinkit'
 
+  pod 'RNCAsyncStorage', :path => '../node_modules/@react-native-community/async-storage'
+
   target 'ApplaudosCodeChallengeReactNativeTests' do
     inherit! :complete
     # Pods for testing

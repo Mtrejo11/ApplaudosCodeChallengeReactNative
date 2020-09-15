@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		00E356F31AD99517003FC87E /* ApplaudosCodeChallengeReactNativeTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* ApplaudosCodeChallengeReactNativeTests.m */; };
+		032CA191AAC63A29CAB92ADB /* libPods-ApplaudosCodeChallengeReactNative-tvOSTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FEE6798E8CC0FADD16E3CE7 /* libPods-ApplaudosCodeChallengeReactNative-tvOSTests.a */; };
 		13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.m */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
@@ -15,27 +16,10 @@
 		2D02E4BD1E0B4A84006451C7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		2D02E4BF1E0B4AB3006451C7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		2DCD954D1E0B4F2C00145EB5 /* ApplaudosCodeChallengeReactNativeTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* ApplaudosCodeChallengeReactNativeTests.m */; };
-		39BA4DA2279BB4F5C918BE7C /* libPods-ApplaudosCodeChallengeReactNative-ApplaudosCodeChallengeReactNativeTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C9D13A41FDF4123EE38BA4C /* libPods-ApplaudosCodeChallengeReactNative-ApplaudosCodeChallengeReactNativeTests.a */; };
-		76414277877458CADF24DBB9 /* libPods-ApplaudosCodeChallengeReactNative-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FBA468892B048B6B74C7E37C /* libPods-ApplaudosCodeChallengeReactNative-tvOS.a */; };
+		4AF43630C2E484FDE255C5DA /* libPods-ApplaudosCodeChallengeReactNative-ApplaudosCodeChallengeReactNativeTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B73EAE05B92C680369CA77A /* libPods-ApplaudosCodeChallengeReactNative-ApplaudosCodeChallengeReactNativeTests.a */; };
+		7A12E2B2B23674F9286917E2 /* libPods-ApplaudosCodeChallengeReactNative-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FBEA6B4B9D4207927D1F3C52 /* libPods-ApplaudosCodeChallengeReactNative-tvOS.a */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
-		8AA25A832FBBAFD6C4CDC028 /* libPods-ApplaudosCodeChallengeReactNative.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 18ADDD0AF0105CF81C7B957E /* libPods-ApplaudosCodeChallengeReactNative.a */; };
-		F4E8C52389CFCB4D499E707E /* libPods-ApplaudosCodeChallengeReactNative-tvOSTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 328FD080D47FDF8D1667977F /* libPods-ApplaudosCodeChallengeReactNative-tvOSTests.a */; };
-		ABAD81D1CDC247A69DFD2A43 /* AntDesign.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B165345EC37A49DFB9958111 /* AntDesign.ttf */; };
-		22236E062249498BADBA525E /* Entypo.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3DA8D6DCB5ED438294B8B04A /* Entypo.ttf */; };
-		08A7FAD6C5FC4E10A94C9127 /* EvilIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CD310B0CC243473A8B0F2689 /* EvilIcons.ttf */; };
-		D95847A8CB8D4C83B9312493 /* Feather.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B641A0014C764492BA50A5A7 /* Feather.ttf */; };
-		966A9D556B6749C584CD6363 /* FontAwesome.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 10C52A2C58324BD2AE6925B0 /* FontAwesome.ttf */; };
-		5333A5796DD4416884B1E344 /* FontAwesome5_Brands.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BBE0F189E1024453928C8FA3 /* FontAwesome5_Brands.ttf */; };
-		E8A8740381994AAA9F242851 /* FontAwesome5_Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CA9BD5CDC01745C2AFD44BF3 /* FontAwesome5_Regular.ttf */; };
-		B82C35FAEB16419996DC5E82 /* FontAwesome5_Solid.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E40D9E796E0444D3A528F174 /* FontAwesome5_Solid.ttf */; };
-		04E74E6F32CB49F9A0427D3C /* Fontisto.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B0B51F64637D47B2B64E150D /* Fontisto.ttf */; };
-		26B8730292934693A90BE888 /* Foundation.ttf in Resources */ = {isa = PBXBuildFile; fileRef = DB572EF1B0F24B2DBF92934A /* Foundation.ttf */; };
-		5ED545F52ABF480CA9658EFD /* Ionicons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BAE6DDEE805D4E7881DA657B /* Ionicons.ttf */; };
-		AED4964659204A8DBE98E454 /* MaterialCommunityIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A46DB3844DAA400A8307F6C7 /* MaterialCommunityIcons.ttf */; };
-		51DB8477C98D4BB1A0E0AAE2 /* MaterialIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0DD9D2AC8B0A4D36AAD66DF9 /* MaterialIcons.ttf */; };
-		81FAD2063A4448A3B620A9B4 /* Octicons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 475A9566EAFF433895160FF4 /* Octicons.ttf */; };
-		C59EF9C4A8654F18A886FED5 /* SimpleLineIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BFCACC33DE06455584438428 /* SimpleLineIcons.ttf */; };
-		A57FDBC75E9746118A6A332C /* Zocial.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 62803B3151F4444387173FFA /* Zocial.ttf */; };
+		EE2B19F8A27199C8E3FE42EA /* libPods-ApplaudosCodeChallengeReactNative.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E54695EACAC47585EC9BA28 /* libPods-ApplaudosCodeChallengeReactNative.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,45 +44,45 @@
 		00E356EE1AD99517003FC87E /* ApplaudosCodeChallengeReactNativeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ApplaudosCodeChallengeReactNativeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		00E356F11AD99517003FC87E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		00E356F21AD99517003FC87E /* ApplaudosCodeChallengeReactNativeTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ApplaudosCodeChallengeReactNativeTests.m; sourceTree = "<group>"; };
+		0DD9D2AC8B0A4D36AAD66DF9 /* MaterialIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = MaterialIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/MaterialIcons.ttf"; sourceTree = "<group>"; };
+		10C52A2C58324BD2AE6925B0 /* FontAwesome.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = FontAwesome.ttf; path = "../node_modules/react-native-vector-icons/Fonts/FontAwesome.ttf"; sourceTree = "<group>"; };
 		13B07F961A680F5B00A75B9A /* ApplaudosCodeChallengeReactNative.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ApplaudosCodeChallengeReactNative.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		13B07FAF1A68108700A75B9A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = ApplaudosCodeChallengeReactNative/AppDelegate.h; sourceTree = "<group>"; };
 		13B07FB01A68108700A75B9A /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = ApplaudosCodeChallengeReactNative/AppDelegate.m; sourceTree = "<group>"; };
 		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = ApplaudosCodeChallengeReactNative/Images.xcassets; sourceTree = "<group>"; };
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = ApplaudosCodeChallengeReactNative/Info.plist; sourceTree = "<group>"; };
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = ApplaudosCodeChallengeReactNative/main.m; sourceTree = "<group>"; };
-		18ADDD0AF0105CF81C7B957E /* libPods-ApplaudosCodeChallengeReactNative.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ApplaudosCodeChallengeReactNative.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		1FEE6798E8CC0FADD16E3CE7 /* libPods-ApplaudosCodeChallengeReactNative-tvOSTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ApplaudosCodeChallengeReactNative-tvOSTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		243E6D864CDFA245679D5084 /* Pods-ApplaudosCodeChallengeReactNative-tvOSTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ApplaudosCodeChallengeReactNative-tvOSTests.debug.xcconfig"; path = "Target Support Files/Pods-ApplaudosCodeChallengeReactNative-tvOSTests/Pods-ApplaudosCodeChallengeReactNative-tvOSTests.debug.xcconfig"; sourceTree = "<group>"; };
+		27A090300A01CE3F92726820 /* Pods-ApplaudosCodeChallengeReactNative-tvOSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ApplaudosCodeChallengeReactNative-tvOSTests.release.xcconfig"; path = "Target Support Files/Pods-ApplaudosCodeChallengeReactNative-tvOSTests/Pods-ApplaudosCodeChallengeReactNative-tvOSTests.release.xcconfig"; sourceTree = "<group>"; };
 		2D02E47B1E0B4A5D006451C7 /* ApplaudosCodeChallengeReactNative-tvOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ApplaudosCodeChallengeReactNative-tvOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D02E4901E0B4A5D006451C7 /* ApplaudosCodeChallengeReactNative-tvOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "ApplaudosCodeChallengeReactNative-tvOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		328FD080D47FDF8D1667977F /* libPods-ApplaudosCodeChallengeReactNative-tvOSTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ApplaudosCodeChallengeReactNative-tvOSTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		3622A86B813D8F6D5013239E /* Pods-ApplaudosCodeChallengeReactNative-tvOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ApplaudosCodeChallengeReactNative-tvOS.debug.xcconfig"; path = "Target Support Files/Pods-ApplaudosCodeChallengeReactNative-tvOS/Pods-ApplaudosCodeChallengeReactNative-tvOS.debug.xcconfig"; sourceTree = "<group>"; };
-		3A307C13094EFE90DD9F25A5 /* Pods-ApplaudosCodeChallengeReactNative-tvOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ApplaudosCodeChallengeReactNative-tvOS.release.xcconfig"; path = "Target Support Files/Pods-ApplaudosCodeChallengeReactNative-tvOS/Pods-ApplaudosCodeChallengeReactNative-tvOS.release.xcconfig"; sourceTree = "<group>"; };
-		66A85C4F857B6C1B225D8A6A /* Pods-ApplaudosCodeChallengeReactNative-ApplaudosCodeChallengeReactNativeTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ApplaudosCodeChallengeReactNative-ApplaudosCodeChallengeReactNativeTests.release.xcconfig"; path = "Target Support Files/Pods-ApplaudosCodeChallengeReactNative-ApplaudosCodeChallengeReactNativeTests/Pods-ApplaudosCodeChallengeReactNative-ApplaudosCodeChallengeReactNativeTests.release.xcconfig"; sourceTree = "<group>"; };
-		69ABFD0AD0527C59B2D18913 /* Pods-ApplaudosCodeChallengeReactNative.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ApplaudosCodeChallengeReactNative.release.xcconfig"; path = "Target Support Files/Pods-ApplaudosCodeChallengeReactNative/Pods-ApplaudosCodeChallengeReactNative.release.xcconfig"; sourceTree = "<group>"; };
-		6D405F1BF0F6852797728BC6 /* Pods-ApplaudosCodeChallengeReactNative-ApplaudosCodeChallengeReactNativeTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ApplaudosCodeChallengeReactNative-ApplaudosCodeChallengeReactNativeTests.debug.xcconfig"; path = "Target Support Files/Pods-ApplaudosCodeChallengeReactNative-ApplaudosCodeChallengeReactNativeTests/Pods-ApplaudosCodeChallengeReactNative-ApplaudosCodeChallengeReactNativeTests.debug.xcconfig"; sourceTree = "<group>"; };
+		2D41F10CB08E7BD05E2D8819 /* Pods-ApplaudosCodeChallengeReactNative.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ApplaudosCodeChallengeReactNative.release.xcconfig"; path = "Target Support Files/Pods-ApplaudosCodeChallengeReactNative/Pods-ApplaudosCodeChallengeReactNative.release.xcconfig"; sourceTree = "<group>"; };
+		3DA8D6DCB5ED438294B8B04A /* Entypo.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Entypo.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Entypo.ttf"; sourceTree = "<group>"; };
+		475A9566EAFF433895160FF4 /* Octicons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Octicons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Octicons.ttf"; sourceTree = "<group>"; };
+		62803B3151F4444387173FFA /* Zocial.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Zocial.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Zocial.ttf"; sourceTree = "<group>"; };
+		71CE93271C2320DE0BF4BE38 /* Pods-ApplaudosCodeChallengeReactNative-tvOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ApplaudosCodeChallengeReactNative-tvOS.release.xcconfig"; path = "Target Support Files/Pods-ApplaudosCodeChallengeReactNative-tvOS/Pods-ApplaudosCodeChallengeReactNative-tvOS.release.xcconfig"; sourceTree = "<group>"; };
+		7B73EAE05B92C680369CA77A /* libPods-ApplaudosCodeChallengeReactNative-ApplaudosCodeChallengeReactNativeTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ApplaudosCodeChallengeReactNative-ApplaudosCodeChallengeReactNativeTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		7E54695EACAC47585EC9BA28 /* libPods-ApplaudosCodeChallengeReactNative.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ApplaudosCodeChallengeReactNative.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = ApplaudosCodeChallengeReactNative/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		9C9D13A41FDF4123EE38BA4C /* libPods-ApplaudosCodeChallengeReactNative-ApplaudosCodeChallengeReactNativeTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ApplaudosCodeChallengeReactNative-ApplaudosCodeChallengeReactNativeTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		A9FDED9794D3570FBE347C85 /* Pods-ApplaudosCodeChallengeReactNative-tvOSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ApplaudosCodeChallengeReactNative-tvOSTests.release.xcconfig"; path = "Target Support Files/Pods-ApplaudosCodeChallengeReactNative-tvOSTests/Pods-ApplaudosCodeChallengeReactNative-tvOSTests.release.xcconfig"; sourceTree = "<group>"; };
-		CCC4BC40572BA5E9A29D253F /* Pods-ApplaudosCodeChallengeReactNative-tvOSTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ApplaudosCodeChallengeReactNative-tvOSTests.debug.xcconfig"; path = "Target Support Files/Pods-ApplaudosCodeChallengeReactNative-tvOSTests/Pods-ApplaudosCodeChallengeReactNative-tvOSTests.debug.xcconfig"; sourceTree = "<group>"; };
-		ECE432B93A22B5ABC7CC761D /* Pods-ApplaudosCodeChallengeReactNative.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ApplaudosCodeChallengeReactNative.debug.xcconfig"; path = "Target Support Files/Pods-ApplaudosCodeChallengeReactNative/Pods-ApplaudosCodeChallengeReactNative.debug.xcconfig"; sourceTree = "<group>"; };
+		9E2D366FF2687697B68C1A5E /* Pods-ApplaudosCodeChallengeReactNative-ApplaudosCodeChallengeReactNativeTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ApplaudosCodeChallengeReactNative-ApplaudosCodeChallengeReactNativeTests.release.xcconfig"; path = "Target Support Files/Pods-ApplaudosCodeChallengeReactNative-ApplaudosCodeChallengeReactNativeTests/Pods-ApplaudosCodeChallengeReactNative-ApplaudosCodeChallengeReactNativeTests.release.xcconfig"; sourceTree = "<group>"; };
+		A46DB3844DAA400A8307F6C7 /* MaterialCommunityIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = MaterialCommunityIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/MaterialCommunityIcons.ttf"; sourceTree = "<group>"; };
+		A8B79711A42B56B74D55D39E /* Pods-ApplaudosCodeChallengeReactNative-ApplaudosCodeChallengeReactNativeTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ApplaudosCodeChallengeReactNative-ApplaudosCodeChallengeReactNativeTests.debug.xcconfig"; path = "Target Support Files/Pods-ApplaudosCodeChallengeReactNative-ApplaudosCodeChallengeReactNativeTests/Pods-ApplaudosCodeChallengeReactNative-ApplaudosCodeChallengeReactNativeTests.debug.xcconfig"; sourceTree = "<group>"; };
+		B0B51F64637D47B2B64E150D /* Fontisto.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Fontisto.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Fontisto.ttf"; sourceTree = "<group>"; };
+		B165345EC37A49DFB9958111 /* AntDesign.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = AntDesign.ttf; path = "../node_modules/react-native-vector-icons/Fonts/AntDesign.ttf"; sourceTree = "<group>"; };
+		B641A0014C764492BA50A5A7 /* Feather.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Feather.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Feather.ttf"; sourceTree = "<group>"; };
+		BAE6DDEE805D4E7881DA657B /* Ionicons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Ionicons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Ionicons.ttf"; sourceTree = "<group>"; };
+		BBE0F189E1024453928C8FA3 /* FontAwesome5_Brands.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = FontAwesome5_Brands.ttf; path = "../node_modules/react-native-vector-icons/Fonts/FontAwesome5_Brands.ttf"; sourceTree = "<group>"; };
+		BFCACC33DE06455584438428 /* SimpleLineIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = SimpleLineIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/SimpleLineIcons.ttf"; sourceTree = "<group>"; };
+		CA9BD5CDC01745C2AFD44BF3 /* FontAwesome5_Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = FontAwesome5_Regular.ttf; path = "../node_modules/react-native-vector-icons/Fonts/FontAwesome5_Regular.ttf"; sourceTree = "<group>"; };
+		CBDEEAF6CD7D1F5E3AE0132E /* Pods-ApplaudosCodeChallengeReactNative.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ApplaudosCodeChallengeReactNative.debug.xcconfig"; path = "Target Support Files/Pods-ApplaudosCodeChallengeReactNative/Pods-ApplaudosCodeChallengeReactNative.debug.xcconfig"; sourceTree = "<group>"; };
+		CD310B0CC243473A8B0F2689 /* EvilIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = EvilIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/EvilIcons.ttf"; sourceTree = "<group>"; };
+		D5A3A44732BFEDC961B7661D /* Pods-ApplaudosCodeChallengeReactNative-tvOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ApplaudosCodeChallengeReactNative-tvOS.debug.xcconfig"; path = "Target Support Files/Pods-ApplaudosCodeChallengeReactNative-tvOS/Pods-ApplaudosCodeChallengeReactNative-tvOS.debug.xcconfig"; sourceTree = "<group>"; };
+		DB572EF1B0F24B2DBF92934A /* Foundation.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Foundation.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Foundation.ttf"; sourceTree = "<group>"; };
+		E40D9E796E0444D3A528F174 /* FontAwesome5_Solid.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = FontAwesome5_Solid.ttf; path = "../node_modules/react-native-vector-icons/Fonts/FontAwesome5_Solid.ttf"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		ED2971642150620600B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = Platforms/AppleTVOS.platform/Developer/SDKs/AppleTVOS12.0.sdk/System/Library/Frameworks/JavaScriptCore.framework; sourceTree = DEVELOPER_DIR; };
-		FBA468892B048B6B74C7E37C /* libPods-ApplaudosCodeChallengeReactNative-tvOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ApplaudosCodeChallengeReactNative-tvOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		B165345EC37A49DFB9958111 /* AntDesign.ttf */ = {isa = PBXFileReference; name = "AntDesign.ttf"; path = "../node_modules/react-native-vector-icons/Fonts/AntDesign.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		3DA8D6DCB5ED438294B8B04A /* Entypo.ttf */ = {isa = PBXFileReference; name = "Entypo.ttf"; path = "../node_modules/react-native-vector-icons/Fonts/Entypo.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		CD310B0CC243473A8B0F2689 /* EvilIcons.ttf */ = {isa = PBXFileReference; name = "EvilIcons.ttf"; path = "../node_modules/react-native-vector-icons/Fonts/EvilIcons.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		B641A0014C764492BA50A5A7 /* Feather.ttf */ = {isa = PBXFileReference; name = "Feather.ttf"; path = "../node_modules/react-native-vector-icons/Fonts/Feather.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		10C52A2C58324BD2AE6925B0 /* FontAwesome.ttf */ = {isa = PBXFileReference; name = "FontAwesome.ttf"; path = "../node_modules/react-native-vector-icons/Fonts/FontAwesome.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		BBE0F189E1024453928C8FA3 /* FontAwesome5_Brands.ttf */ = {isa = PBXFileReference; name = "FontAwesome5_Brands.ttf"; path = "../node_modules/react-native-vector-icons/Fonts/FontAwesome5_Brands.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		CA9BD5CDC01745C2AFD44BF3 /* FontAwesome5_Regular.ttf */ = {isa = PBXFileReference; name = "FontAwesome5_Regular.ttf"; path = "../node_modules/react-native-vector-icons/Fonts/FontAwesome5_Regular.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		E40D9E796E0444D3A528F174 /* FontAwesome5_Solid.ttf */ = {isa = PBXFileReference; name = "FontAwesome5_Solid.ttf"; path = "../node_modules/react-native-vector-icons/Fonts/FontAwesome5_Solid.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		B0B51F64637D47B2B64E150D /* Fontisto.ttf */ = {isa = PBXFileReference; name = "Fontisto.ttf"; path = "../node_modules/react-native-vector-icons/Fonts/Fontisto.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		DB572EF1B0F24B2DBF92934A /* Foundation.ttf */ = {isa = PBXFileReference; name = "Foundation.ttf"; path = "../node_modules/react-native-vector-icons/Fonts/Foundation.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		BAE6DDEE805D4E7881DA657B /* Ionicons.ttf */ = {isa = PBXFileReference; name = "Ionicons.ttf"; path = "../node_modules/react-native-vector-icons/Fonts/Ionicons.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		A46DB3844DAA400A8307F6C7 /* MaterialCommunityIcons.ttf */ = {isa = PBXFileReference; name = "MaterialCommunityIcons.ttf"; path = "../node_modules/react-native-vector-icons/Fonts/MaterialCommunityIcons.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		0DD9D2AC8B0A4D36AAD66DF9 /* MaterialIcons.ttf */ = {isa = PBXFileReference; name = "MaterialIcons.ttf"; path = "../node_modules/react-native-vector-icons/Fonts/MaterialIcons.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		475A9566EAFF433895160FF4 /* Octicons.ttf */ = {isa = PBXFileReference; name = "Octicons.ttf"; path = "../node_modules/react-native-vector-icons/Fonts/Octicons.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		BFCACC33DE06455584438428 /* SimpleLineIcons.ttf */ = {isa = PBXFileReference; name = "SimpleLineIcons.ttf"; path = "../node_modules/react-native-vector-icons/Fonts/SimpleLineIcons.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		62803B3151F4444387173FFA /* Zocial.ttf */ = {isa = PBXFileReference; name = "Zocial.ttf"; path = "../node_modules/react-native-vector-icons/Fonts/Zocial.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		FBEA6B4B9D4207927D1F3C52 /* libPods-ApplaudosCodeChallengeReactNative-tvOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ApplaudosCodeChallengeReactNative-tvOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,7 +90,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				39BA4DA2279BB4F5C918BE7C /* libPods-ApplaudosCodeChallengeReactNative-ApplaudosCodeChallengeReactNativeTests.a in Frameworks */,
+				4AF43630C2E484FDE255C5DA /* libPods-ApplaudosCodeChallengeReactNative-ApplaudosCodeChallengeReactNativeTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -114,7 +98,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8AA25A832FBBAFD6C4CDC028 /* libPods-ApplaudosCodeChallengeReactNative.a in Frameworks */,
+				EE2B19F8A27199C8E3FE42EA /* libPods-ApplaudosCodeChallengeReactNative.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -122,7 +106,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				76414277877458CADF24DBB9 /* libPods-ApplaudosCodeChallengeReactNative-tvOS.a in Frameworks */,
+				7A12E2B2B23674F9286917E2 /* libPods-ApplaudosCodeChallengeReactNative-tvOS.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -130,7 +114,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F4E8C52389CFCB4D499E707E /* libPods-ApplaudosCodeChallengeReactNative-tvOSTests.a in Frameworks */,
+				032CA191AAC63A29CAB92ADB /* libPods-ApplaudosCodeChallengeReactNative-tvOSTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -171,16 +155,15 @@
 		1D85E181AB3F059B387FD881 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				ECE432B93A22B5ABC7CC761D /* Pods-ApplaudosCodeChallengeReactNative.debug.xcconfig */,
-				69ABFD0AD0527C59B2D18913 /* Pods-ApplaudosCodeChallengeReactNative.release.xcconfig */,
-				6D405F1BF0F6852797728BC6 /* Pods-ApplaudosCodeChallengeReactNative-ApplaudosCodeChallengeReactNativeTests.debug.xcconfig */,
-				66A85C4F857B6C1B225D8A6A /* Pods-ApplaudosCodeChallengeReactNative-ApplaudosCodeChallengeReactNativeTests.release.xcconfig */,
-				3622A86B813D8F6D5013239E /* Pods-ApplaudosCodeChallengeReactNative-tvOS.debug.xcconfig */,
-				3A307C13094EFE90DD9F25A5 /* Pods-ApplaudosCodeChallengeReactNative-tvOS.release.xcconfig */,
-				CCC4BC40572BA5E9A29D253F /* Pods-ApplaudosCodeChallengeReactNative-tvOSTests.debug.xcconfig */,
-				A9FDED9794D3570FBE347C85 /* Pods-ApplaudosCodeChallengeReactNative-tvOSTests.release.xcconfig */,
+				CBDEEAF6CD7D1F5E3AE0132E /* Pods-ApplaudosCodeChallengeReactNative.debug.xcconfig */,
+				2D41F10CB08E7BD05E2D8819 /* Pods-ApplaudosCodeChallengeReactNative.release.xcconfig */,
+				A8B79711A42B56B74D55D39E /* Pods-ApplaudosCodeChallengeReactNative-ApplaudosCodeChallengeReactNativeTests.debug.xcconfig */,
+				9E2D366FF2687697B68C1A5E /* Pods-ApplaudosCodeChallengeReactNative-ApplaudosCodeChallengeReactNativeTests.release.xcconfig */,
+				D5A3A44732BFEDC961B7661D /* Pods-ApplaudosCodeChallengeReactNative-tvOS.debug.xcconfig */,
+				71CE93271C2320DE0BF4BE38 /* Pods-ApplaudosCodeChallengeReactNative-tvOS.release.xcconfig */,
+				243E6D864CDFA245679D5084 /* Pods-ApplaudosCodeChallengeReactNative-tvOSTests.debug.xcconfig */,
+				27A090300A01CE3F92726820 /* Pods-ApplaudosCodeChallengeReactNative-tvOSTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -189,10 +172,10 @@
 			children = (
 				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,
 				ED2971642150620600B7C4FE /* JavaScriptCore.framework */,
-				18ADDD0AF0105CF81C7B957E /* libPods-ApplaudosCodeChallengeReactNative.a */,
-				9C9D13A41FDF4123EE38BA4C /* libPods-ApplaudosCodeChallengeReactNative-ApplaudosCodeChallengeReactNativeTests.a */,
-				FBA468892B048B6B74C7E37C /* libPods-ApplaudosCodeChallengeReactNative-tvOS.a */,
-				328FD080D47FDF8D1667977F /* libPods-ApplaudosCodeChallengeReactNative-tvOSTests.a */,
+				7E54695EACAC47585EC9BA28 /* libPods-ApplaudosCodeChallengeReactNative.a */,
+				7B73EAE05B92C680369CA77A /* libPods-ApplaudosCodeChallengeReactNative-ApplaudosCodeChallengeReactNativeTests.a */,
+				FBEA6B4B9D4207927D1F3C52 /* libPods-ApplaudosCodeChallengeReactNative-tvOS.a */,
+				1FEE6798E8CC0FADD16E3CE7 /* libPods-ApplaudosCodeChallengeReactNative-tvOSTests.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -232,7 +215,7 @@
 			sourceTree = "<group>";
 		};
 		ACA1DB7A5A1243468B08F6DA /* Resources */ = {
-			isa = "PBXGroup";
+			isa = PBXGroup;
 			children = (
 				B165345EC37A49DFB9958111 /* AntDesign.ttf */,
 				3DA8D6DCB5ED438294B8B04A /* Entypo.ttf */,
@@ -253,7 +236,6 @@
 			);
 			name = Resources;
 			sourceTree = "<group>";
-			path = "";
 		};
 /* End PBXGroup section */
 
@@ -262,11 +244,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 00E357021AD99517003FC87E /* Build configuration list for PBXNativeTarget "ApplaudosCodeChallengeReactNativeTests" */;
 			buildPhases = (
-				7C57BFE288E59D094E8C4C20 /* [CP] Check Pods Manifest.lock */,
+				4D3AB5C9B0CAF41C5B238C59 /* [CP] Check Pods Manifest.lock */,
 				00E356EA1AD99517003FC87E /* Sources */,
 				00E356EB1AD99517003FC87E /* Frameworks */,
 				00E356EC1AD99517003FC87E /* Resources */,
-				FEF99A8E40BFFA1E31699988 /* [CP] Copy Pods Resources */,
+				A61DCE419427A92F1E6D8A48 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -282,13 +264,13 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "ApplaudosCodeChallengeReactNative" */;
 			buildPhases = (
-				FED22BD75774A6A99B97DFA3 /* [CP] Check Pods Manifest.lock */,
+				1C66C56155E627A1E5A4E8DC /* [CP] Check Pods Manifest.lock */,
 				FD10A7F022414F080027D42C /* Start Packager */,
 				13B07F871A680F5B00A75B9A /* Sources */,
 				13B07F8C1A680F5B00A75B9A /* Frameworks */,
 				13B07F8E1A680F5B00A75B9A /* Resources */,
 				00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */,
-				4139810C5FE25C0BA8724940 /* [CP] Copy Pods Resources */,
+				ACBCCE0A2E57B16BB6D80D3C /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -303,7 +285,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 2D02E4BA1E0B4A5E006451C7 /* Build configuration list for PBXNativeTarget "ApplaudosCodeChallengeReactNative-tvOS" */;
 			buildPhases = (
-				75A982BDAD0EFD6227BE7840 /* [CP] Check Pods Manifest.lock */,
+				1E53300AEA8BF579079964BE /* [CP] Check Pods Manifest.lock */,
 				FD10A7F122414F3F0027D42C /* Start Packager */,
 				2D02E4771E0B4A5D006451C7 /* Sources */,
 				2D02E4781E0B4A5D006451C7 /* Frameworks */,
@@ -323,7 +305,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 2D02E4BB1E0B4A5E006451C7 /* Build configuration list for PBXNativeTarget "ApplaudosCodeChallengeReactNative-tvOSTests" */;
 			buildPhases = (
-				38BBC18F2A93B677BCB9D0AF /* [CP] Check Pods Manifest.lock */,
+				52B723F30E9409550BCB450F /* [CP] Check Pods Manifest.lock */,
 				2D02E48C1E0B4A5D006451C7 /* Sources */,
 				2D02E48D1E0B4A5D006451C7 /* Frameworks */,
 				2D02E48E1E0B4A5D006451C7 /* Resources */,
@@ -351,6 +333,7 @@
 						TestTargetID = 13B07F861A680F5B00A75B9A;
 					};
 					13B07F861A680F5B00A75B9A = {
+						DevelopmentTeam = 2N39RD76AF;
 						LastSwiftMigration = 1120;
 					};
 					2D02E47A1E0B4A5D006451C7 = {
@@ -399,22 +382,6 @@
 			files = (
 				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
-				ABAD81D1CDC247A69DFD2A43 /* AntDesign.ttf in Resources */,
-				22236E062249498BADBA525E /* Entypo.ttf in Resources */,
-				08A7FAD6C5FC4E10A94C9127 /* EvilIcons.ttf in Resources */,
-				D95847A8CB8D4C83B9312493 /* Feather.ttf in Resources */,
-				966A9D556B6749C584CD6363 /* FontAwesome.ttf in Resources */,
-				5333A5796DD4416884B1E344 /* FontAwesome5_Brands.ttf in Resources */,
-				E8A8740381994AAA9F242851 /* FontAwesome5_Regular.ttf in Resources */,
-				B82C35FAEB16419996DC5E82 /* FontAwesome5_Solid.ttf in Resources */,
-				04E74E6F32CB49F9A0427D3C /* Fontisto.ttf in Resources */,
-				26B8730292934693A90BE888 /* Foundation.ttf in Resources */,
-				5ED545F52ABF480CA9658EFD /* Ionicons.ttf in Resources */,
-				AED4964659204A8DBE98E454 /* MaterialCommunityIcons.ttf in Resources */,
-				51DB8477C98D4BB1A0E0AAE2 /* MaterialIcons.ttf in Resources */,
-				81FAD2063A4448A3B620A9B4 /* Octicons.ttf in Resources */,
-				C59EF9C4A8654F18A886FED5 /* SimpleLineIcons.ttf in Resources */,
-				A57FDBC75E9746118A6A332C /* Zocial.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -448,23 +415,9 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "export NODE_BINARY=node\n../node_modules/react-native/scripts/react-native-xcode.sh";
+			shellScript = "export NODE_BINARY=node\n../node_modules/react-native/scripts/react-native-xcode.sh\n";
 		};
-		2D02E4CB1E0B4B27006451C7 /* Bundle React Native Code And Images */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Bundle React Native Code And Images";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "export NODE_BINARY=node\n../node_modules/react-native/scripts/react-native-xcode.sh";
-		};
-		38BBC18F2A93B677BCB9D0AF /* [CP] Check Pods Manifest.lock */ = {
+		1C66C56155E627A1E5A4E8DC /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -479,32 +432,14 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-ApplaudosCodeChallengeReactNative-tvOSTests-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-ApplaudosCodeChallengeReactNative-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		4139810C5FE25C0BA8724940 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-ApplaudosCodeChallengeReactNative/Pods-ApplaudosCodeChallengeReactNative-resources.sh",
-				"${PODS_CONFIGURATION_BUILD_DIR}/React-Core/AccessibilityResources.bundle",
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/AccessibilityResources.bundle",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ApplaudosCodeChallengeReactNative/Pods-ApplaudosCodeChallengeReactNative-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		75A982BDAD0EFD6227BE7840 /* [CP] Check Pods Manifest.lock */ = {
+		1E53300AEA8BF579079964BE /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -526,7 +461,21 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		7C57BFE288E59D094E8C4C20 /* [CP] Check Pods Manifest.lock */ = {
+		2D02E4CB1E0B4B27006451C7 /* Bundle React Native Code And Images */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Bundle React Native Code And Images";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "export NODE_BINARY=node\n../node_modules/react-native/scripts/react-native-xcode.sh";
+		};
+		4D3AB5C9B0CAF41C5B238C59 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -546,6 +495,128 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		52B723F30E9409550BCB450F /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-ApplaudosCodeChallengeReactNative-tvOSTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A61DCE419427A92F1E6D8A48 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ApplaudosCodeChallengeReactNative-ApplaudosCodeChallengeReactNativeTests/Pods-ApplaudosCodeChallengeReactNative-ApplaudosCodeChallengeReactNativeTests-resources.sh",
+				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/AntDesign.ttf",
+				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/Entypo.ttf",
+				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/EvilIcons.ttf",
+				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/Feather.ttf",
+				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/FontAwesome.ttf",
+				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/FontAwesome5_Brands.ttf",
+				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/FontAwesome5_Regular.ttf",
+				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/FontAwesome5_Solid.ttf",
+				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/Fontisto.ttf",
+				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/Foundation.ttf",
+				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/Ionicons.ttf",
+				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/MaterialCommunityIcons.ttf",
+				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/MaterialIcons.ttf",
+				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/Octicons.ttf",
+				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/SimpleLineIcons.ttf",
+				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/Zocial.ttf",
+				"${PODS_CONFIGURATION_BUILD_DIR}/React-Core/AccessibilityResources.bundle",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/AntDesign.ttf",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/Entypo.ttf",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/EvilIcons.ttf",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/Feather.ttf",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/FontAwesome.ttf",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/FontAwesome5_Brands.ttf",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/FontAwesome5_Regular.ttf",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/FontAwesome5_Solid.ttf",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/Fontisto.ttf",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/Foundation.ttf",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/Ionicons.ttf",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/MaterialCommunityIcons.ttf",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/MaterialIcons.ttf",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/Octicons.ttf",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/SimpleLineIcons.ttf",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/Zocial.ttf",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/AccessibilityResources.bundle",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ApplaudosCodeChallengeReactNative-ApplaudosCodeChallengeReactNativeTests/Pods-ApplaudosCodeChallengeReactNative-ApplaudosCodeChallengeReactNativeTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		ACBCCE0A2E57B16BB6D80D3C /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ApplaudosCodeChallengeReactNative/Pods-ApplaudosCodeChallengeReactNative-resources.sh",
+				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/AntDesign.ttf",
+				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/Entypo.ttf",
+				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/EvilIcons.ttf",
+				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/Feather.ttf",
+				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/FontAwesome.ttf",
+				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/FontAwesome5_Brands.ttf",
+				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/FontAwesome5_Regular.ttf",
+				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/FontAwesome5_Solid.ttf",
+				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/Fontisto.ttf",
+				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/Foundation.ttf",
+				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/Ionicons.ttf",
+				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/MaterialCommunityIcons.ttf",
+				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/MaterialIcons.ttf",
+				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/Octicons.ttf",
+				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/SimpleLineIcons.ttf",
+				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/Zocial.ttf",
+				"${PODS_CONFIGURATION_BUILD_DIR}/React-Core/AccessibilityResources.bundle",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/AntDesign.ttf",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/Entypo.ttf",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/EvilIcons.ttf",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/Feather.ttf",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/FontAwesome.ttf",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/FontAwesome5_Brands.ttf",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/FontAwesome5_Regular.ttf",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/FontAwesome5_Solid.ttf",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/Fontisto.ttf",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/Foundation.ttf",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/Ionicons.ttf",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/MaterialCommunityIcons.ttf",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/MaterialIcons.ttf",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/Octicons.ttf",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/SimpleLineIcons.ttf",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/Zocial.ttf",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/AccessibilityResources.bundle",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ApplaudosCodeChallengeReactNative/Pods-ApplaudosCodeChallengeReactNative-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		FD10A7F022414F080027D42C /* Start Packager */ = {
@@ -584,46 +655,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "export RCT_METRO_PORT=\"${RCT_METRO_PORT:=8081}\"\necho \"export RCT_METRO_PORT=${RCT_METRO_PORT}\" > \"${SRCROOT}/../node_modules/react-native/scripts/.packager.env\"\nif [ -z \"${RCT_NO_LAUNCH_PACKAGER+xxx}\" ] ; then\n  if nc -w 5 -z localhost ${RCT_METRO_PORT} ; then\n    if ! curl -s \"http://localhost:${RCT_METRO_PORT}/status\" | grep -q \"packager-status:running\" ; then\n      echo \"Port ${RCT_METRO_PORT} already in use, packager is either not running or not running correctly\"\n      exit 2\n    fi\n  else\n    open \"$SRCROOT/../node_modules/react-native/scripts/launchPackager.command\" || echo \"Can't start packager automatically\"\n  fi\nfi\n";
-			showEnvVarsInLog = 0;
-		};
-		FED22BD75774A6A99B97DFA3 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-ApplaudosCodeChallengeReactNative-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		FEF99A8E40BFFA1E31699988 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-ApplaudosCodeChallengeReactNative-ApplaudosCodeChallengeReactNativeTests/Pods-ApplaudosCodeChallengeReactNative-ApplaudosCodeChallengeReactNativeTests-resources.sh",
-				"${PODS_CONFIGURATION_BUILD_DIR}/React-Core/AccessibilityResources.bundle",
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/AccessibilityResources.bundle",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ApplaudosCodeChallengeReactNative-ApplaudosCodeChallengeReactNativeTests/Pods-ApplaudosCodeChallengeReactNative-ApplaudosCodeChallengeReactNativeTests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -681,7 +712,7 @@
 /* Begin XCBuildConfiguration section */
 		00E356F61AD99517003FC87E /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 6D405F1BF0F6852797728BC6 /* Pods-ApplaudosCodeChallengeReactNative-ApplaudosCodeChallengeReactNativeTests.debug.xcconfig */;
+			baseConfigurationReference = A8B79711A42B56B74D55D39E /* Pods-ApplaudosCodeChallengeReactNative-ApplaudosCodeChallengeReactNativeTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -704,7 +735,7 @@
 		};
 		00E356F71AD99517003FC87E /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 66A85C4F857B6C1B225D8A6A /* Pods-ApplaudosCodeChallengeReactNative-ApplaudosCodeChallengeReactNativeTests.release.xcconfig */;
+			baseConfigurationReference = 9E2D366FF2687697B68C1A5E /* Pods-ApplaudosCodeChallengeReactNative-ApplaudosCodeChallengeReactNativeTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COPY_PHASE_STRIP = NO;
@@ -724,11 +755,12 @@
 		};
 		13B07F941A680F5B00A75B9A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = ECE432B93A22B5ABC7CC761D /* Pods-ApplaudosCodeChallengeReactNative.debug.xcconfig */;
+			baseConfigurationReference = CBDEEAF6CD7D1F5E3AE0132E /* Pods-ApplaudosCodeChallengeReactNative.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 2N39RD76AF;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = ApplaudosCodeChallengeReactNative/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -747,11 +779,12 @@
 		};
 		13B07F951A680F5B00A75B9A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 69ABFD0AD0527C59B2D18913 /* Pods-ApplaudosCodeChallengeReactNative.release.xcconfig */;
+			baseConfigurationReference = 2D41F10CB08E7BD05E2D8819 /* Pods-ApplaudosCodeChallengeReactNative.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 2N39RD76AF;
 				INFOPLIST_FILE = ApplaudosCodeChallengeReactNative/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
@@ -768,7 +801,7 @@
 		};
 		2D02E4971E0B4A5E006451C7 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 3622A86B813D8F6D5013239E /* Pods-ApplaudosCodeChallengeReactNative-tvOS.debug.xcconfig */;
+			baseConfigurationReference = D5A3A44732BFEDC961B7661D /* Pods-ApplaudosCodeChallengeReactNative-tvOS.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -796,7 +829,7 @@
 		};
 		2D02E4981E0B4A5E006451C7 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 3A307C13094EFE90DD9F25A5 /* Pods-ApplaudosCodeChallengeReactNative-tvOS.release.xcconfig */;
+			baseConfigurationReference = 71CE93271C2320DE0BF4BE38 /* Pods-ApplaudosCodeChallengeReactNative-tvOS.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -824,7 +857,7 @@
 		};
 		2D02E4991E0B4A5E006451C7 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = CCC4BC40572BA5E9A29D253F /* Pods-ApplaudosCodeChallengeReactNative-tvOSTests.debug.xcconfig */;
+			baseConfigurationReference = 243E6D864CDFA245679D5084 /* Pods-ApplaudosCodeChallengeReactNative-tvOSTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ANALYZER_NONNULL = YES;
@@ -851,7 +884,7 @@
 		};
 		2D02E49A1E0B4A5E006451C7 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = A9FDED9794D3570FBE347C85 /* Pods-ApplaudosCodeChallengeReactNative-tvOSTests.release.xcconfig */;
+			baseConfigurationReference = 27A090300A01CE3F92726820 /* Pods-ApplaudosCodeChallengeReactNative-tvOSTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ANALYZER_NONNULL = YES;
