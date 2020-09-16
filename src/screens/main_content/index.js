@@ -45,6 +45,7 @@ const MainContentScreen = props => {
     const [categoriesStep, setCategoriesStep] = useState(0)
     const [searchResults, setSearchResults] = useState([])
     const [fetchingApi, setFetchingApi] = useState(true)
+    const [fetchingStep, setFetchingStep] = useState(false)
 
 
     useEffect(() => {
@@ -55,10 +56,11 @@ const MainContentScreen = props => {
     const fetchCategories = async () => {
         if (fetchingApi) {
             setFetchingApi(false)
+            setFetchingStep(true)
             const categories = await getCategories(categoriesStep);
             if (categories.status) {
                 const currentCategories = categoriesStep === 0 ? [] : props.route.params.type === 'anime' ? animeCategories : mangaCategories;
-                categories.message.data.forEach(async category => {
+                categories.message.data.forEach(async (category, index) => {
                     currentCategories.push({
                         categoryId: category.id,
                         reference: category.links.self,
@@ -66,19 +68,20 @@ const MainContentScreen = props => {
                         content: [],
                         relationships: category.relationships,
                     });
-                });
-                props.dispatch({
-                    type: GET_CATEGORIES,
-                    payload: {
-                        [props.route.params.type === 'anime' ? 'animeCategories' : 'mangaCategories']: currentCategories
+                    if (index === categories.message.data.length - 1) {
+                        props.dispatch({
+                            type: GET_CATEGORIES,
+                            payload: {
+                                [props.route.params.type === 'anime' ? 'animeCategories' : 'mangaCategories']: currentCategories
+                            }
+                        });
+                        await loadCategoryContent(currentCategories)
                     }
                 });
-                await loadCategoryContent()
-                setLoadingContent(false)
+
             } else {
                 ToastAndroid.show("Couldn't connect to the server", ToastAndroid.SHORT);
                 await loadCategoryContent();
-                setLoadingContent(false)
             }
         }
     }
@@ -89,22 +92,21 @@ const MainContentScreen = props => {
     }
 
 
-    const loadCategoryContent = async () => {
+    const loadCategoryContent = async (currentCategories) => {
         if (fetchingApi) {
-
-            const categoriesSaved = props.route.params.type === 'anime' ? animeCategories : mangaCategories
+            
             let fullContent = []
-            if (categoriesSaved.length > 0) {
+            if (currentCategories.length > 0) {
                 const steps = categoriesStep
-                for (let index = categoriesStep; index < steps + 5; index++) {
-                    const categoryContent = await getContentList(categoriesSaved[index].reference, props.route.params.type)
+                for (let index = steps; index < steps + 5; index++) {
+                    const categoryContent = await getContentList(currentCategories[index].reference, props.route.params.type)
                     if (categoryContent.status) {
-                        categoriesSaved[index].content = categoryContent.message.data;
-                        fullContent = fullContent.concat(categoriesSaved[index].content);
+                        currentCategories[index].content = categoryContent.message.data;
+                        fullContent = fullContent.concat(currentCategories[index].content);
                         props.dispatch({
                             type: GET_CATEGORIES,
                             payload: {
-                                [props.route.params.type === 'anime' ? 'animeCategories' : 'mangaCategories']: categoriesSaved,
+                                [props.route.params.type === 'anime' ? 'animeCategories' : 'mangaCategories']: currentCategories,
                                 [props.route.params.type]: fullContent
                             }
                         });
@@ -114,6 +116,8 @@ const MainContentScreen = props => {
                 }
                 setCategoriesStep(categoriesStep + 5)
                 setFetchingApi(true)
+                setFetchingStep(false)
+                setLoadingContent(false)
             }
         }
 
@@ -241,7 +245,7 @@ const MainContentScreen = props => {
                                     </>
                             }
                             {
-                                fetchingApi ? <ActivityIndicator size="small" color="#D2F898" style={{ marginTop: 20 }} /> : null
+                                fetchingStep ? <ActivityIndicator size="small" color="#D2F898" style={{ marginTop: 20 }} /> : null
                             }
 
                         </>
@@ -256,7 +260,6 @@ const styles = StyleSheet.create({
     mainContainer: {
         flex: 1,
         backgroundColor: '#2F2F2F',
-        padding: 35,
     },
     topContainer: {
         flexDirection: 'row',
